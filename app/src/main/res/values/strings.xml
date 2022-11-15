@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">HewanKita</string>
+    <string name="outlet">Outlet</string>
+    <string name="bookingDate">Booking Date</string>
+    <string name="bookingTime">Booking Time</string>
+    <string name="choose">-- Choose --</string>
+    <string name="search">Search</string>
+    <string name="address">Address</string>
+    <string name="checkIn">Check In</string>
+    <string name="checkOut">Check Out</string>
+    <string name="timeOfArrival">Time Of Arrival</string>
+    <string name="next">Next</string>
+    <string name="animalDoctor">Animal Doctor</string>
+    <string name="custody">Custody</string>
+    <string name="grooming">Grooming</string>
+    <string name="vaccination">Vaccination</string>
+
+    <string-array name="OutletName">
+        <item>HewanKita 1</item>
+        <item>HewanKita 2</item>
+        <item>HewanKita 3</item>
+        <item>HewanKita 4</item>
+        <item>HewanKita 5</item>
+    </string-array>
+
+    <string-array name="OutletAddress">
+        <item>Jakarta</item>
+        <item>Bogor</item>
+        <item>Depok</item>
+        <item>Tangerang</item>
+        <item>Bekasi</item>
+    </string-array>
 </resources>
