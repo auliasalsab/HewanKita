@@ -3,8 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.151" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/drawable/ic_home.xml" value="0.151" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/drawable/ic_profile.xml" value="0.151" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/drawable/ic_tips.xml" value="0.151" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_bottom.xml" value="0.20068027210884354" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_dokter_hewan.xml" value="0.18645833333333334" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_main.xml" value="0.18645833333333334" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_dashboard.xml" value="0.18645833333333334" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_home.xml" value="0.2998324958123953" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_profile.xml" value="0.18645833333333334" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18" />
+        <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.124" />
         <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/drawable/border.xml" value="0.1" />
+        <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/drawable/border_bg.xml" value="0.147" />
+        <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/drawable/border_btn.xml" value="0.147" />
+        <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/drawable/border_main.xml" value="0.147" />
+        <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
         <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/layout/activity_care.xml" value="0.1" />
+        <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/layout/activity_splash_screen.xml" value="0.18645833333333334" />
       </map>
     </option>
   </component>

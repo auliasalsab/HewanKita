@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="id.auliasalsabila.hewankita">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,17 +16,7 @@
         android:theme="@style/Theme.HewanKita"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".ui.activity.GroomingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.VaccinationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.CareActivity"
+            android:name=".ui.splash.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,12 +25,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.OutletActivity"
+            android:name=".ui.bottom.BottomActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.AnimalDoctorActivity"
-            android:exported="false">
-        </activity>
+            android:name=".ui.doctor.DoctorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.grooming.GroomingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.care.CareActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.vaccination.VaccinationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.outlet.OutletActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

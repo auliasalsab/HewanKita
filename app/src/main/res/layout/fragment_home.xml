@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_color"
+    tools:context=".ui.bottom.ui.home.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivBackground"
+            android:layout_width="328dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/logo"
+            app:srcCompat="@drawable/border_main" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/logo"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/tvTitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/title1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/ivLogo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/title2"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/ivLogo"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle1"/>
+
+        <TextView
+            android:id="@+id/tvTitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/title3"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/ivLogo"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle2"/>
+
+        <TextView
+            android:id="@+id/tvTitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title4"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/ivLogo"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle3"/>
+
+        <ImageView
+            android:id="@+id/ivDoctor"
+            android:layout_width="155dp"
+            android:layout_height="155dp"
+            android:layout_marginTop="16dp"
+            android:padding="32dp"
+            android:background="@drawable/border_main"
+            app:layout_constraintTop_toBottomOf="@id/ivBackground"
+            app:layout_constraintStart_toStartOf="@id/ivBackground"
+            android:contentDescription="@string/logo"
+            app:srcCompat="@drawable/doctor"/>
+
+        <ImageView
+            android:id="@+id/ivConsultation"
+            android:layout_width="155dp"
+            android:layout_height="155dp"
+            android:layout_marginTop="16dp"
+            android:padding="32dp"
+            android:background="@drawable/border_main"
+            app:layout_constraintTop_toBottomOf="@id/ivBackground"
+            app:layout_constraintEnd_toEndOf="@id/ivBackground"
+            android:contentDescription="@string/logo"
+            app:srcCompat="@drawable/consultation"/>
+
+        <ImageView
+            android:id="@+id/ivGrooming"
+            android:layout_width="155dp"
+            android:layout_height="155dp"
+            android:layout_marginTop="16dp"
+            android:padding="32dp"
+            android:background="@drawable/border_main"
+            app:layout_constraintTop_toBottomOf="@id/ivDoctor"
+            app:layout_constraintStart_toStartOf="@id/ivBackground"
+            android:contentDescription="@string/logo"
+            app:srcCompat="@drawable/grooming"/>
+
+        <ImageView
+            android:id="@+id/ivCare"
+            android:layout_width="155dp"
+            android:layout_height="155dp"
+            android:layout_marginTop="16dp"
+            android:padding="32dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/border_main"
+            app:layout_constraintTop_toBottomOf="@id/ivConsultation"
+            app:layout_constraintEnd_toEndOf="@id/ivBackground"
+            android:contentDescription="@string/logo"
+            app:srcCompat="@drawable/care"/>
+
+        <ImageView
+            android:id="@+id/ivVaccination"
+            android:layout_width="155dp"
+            android:layout_height="155dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="72dp"
+            android:padding="32dp"
+            android:background="@drawable/border_main"
+            app:layout_constraintTop_toBottomOf="@id/ivGrooming"
+            app:layout_constraintStart_toStartOf="@id/ivBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/logo"
+            app:srcCompat="@drawable/vaccination"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

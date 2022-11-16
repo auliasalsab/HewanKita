@@ -14,6 +14,25 @@
     <string name="custody">Custody</string>
     <string name="grooming">Grooming</string>
     <string name="vaccination">Vaccination</string>
+    <string name="email">Email</string>
+    <string name="email_validate">Invalid email</string>
+    <string name="password">Password</string>
+    <string name="password_validate">Invalid Password</string>
+    <string name="login_error">User not found or password is wrong</string>
+    <string name="login_success">Login success</string>
+    <string name="logout_success">Logout success</string>
+    <string name="register_error">Registration failed, user already exists or email is invalid</string>
+    <string name="changeLanguage">Ubah Bahasa</string>
+    <string name="logo">Logo</string>
+    <string name="login">Login</string>
+    <string name="noHaveAccount">Tidak punya akun?</string>
+    <string name="register">Register</string>
+    <string name="register_success">Registration success</string>
+    <string name="name">Nama</string>
+    <string name="title1">Mau konsultasi,</string>
+    <string name="title2">tanya-tanya atau</string>
+    <string name="title3">curhat ke dokter hewan?</string>
+    <string name="title4">Yuk coba di aplikasi HewanKita aja!!!</string>
 
     <string-array name="OutletName">
         <item>HewanKita 1</item>
@@ -30,4 +49,8 @@
         <item>Tangerang</item>
         <item>Bekasi</item>
     </string-array>
+    <string name="title_activity_bottom">BottomActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_tips">Tips</string>
+    <string name="title_profile">Profile</string>
 </resources>
