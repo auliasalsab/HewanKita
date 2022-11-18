@@ -1,9 +1,8 @@
 package id.auliasalsabila.hewankita.ui.login
 
-/*
 import androidx.lifecycle.*
-import com.narvenia.submission1storyapp.data.StoryRepository
+import id.auliasalsabila.hewankita.data.AnimalRepository
 
-class LoginViewModel(private val storyRepository: StoryRepository) : ViewModel() {
-    fun login(email: String, password: String) = storyRepository.login(email, password)
-}*/
+class LoginViewModel(private val animalRepository: AnimalRepository) : ViewModel() {
+    fun login(email: String, password: String) = animalRepository.login(email, password)
+}

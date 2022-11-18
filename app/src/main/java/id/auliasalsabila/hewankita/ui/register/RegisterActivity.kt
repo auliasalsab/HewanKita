@@ -1,6 +1,6 @@
 package id.auliasalsabila.hewankita.ui.register
 
-/*import android.content.Intent
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
@@ -8,7 +8,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import id.auliasalsabila.hewankita.R
+import id.auliasalsabila.hewankita.data.Result
 import id.auliasalsabila.hewankita.databinding.ActivityRegisterBinding
+import id.auliasalsabila.hewankita.utils.ViewModelFactory
 import id.auliasalsabila.hewankita.ui.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
@@ -66,4 +68,4 @@ class RegisterActivity : AppCompatActivity() {
         super.onDestroy()
         _binding = null
     }
-}*/
+}

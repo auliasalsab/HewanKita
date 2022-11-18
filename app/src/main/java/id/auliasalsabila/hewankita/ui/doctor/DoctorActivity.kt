@@ -6,14 +6,16 @@ import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import id.auliasalsabila.hewankita.R
-import id.auliasalsabila.hewankita.databinding.ActivityDokterHewanBinding
+import id.auliasalsabila.hewankita.databinding.ActivityDoctorBinding
 import id.auliasalsabila.hewankita.ui.outlet.OutletActivity
 import java.lang.reflect.Array.getInt
 
 class DoctorActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var binding: ActivityDokterHewanBinding
+    private lateinit var binding: ActivityDoctorBinding
     private var mYear = 0
     private var mMonth = 0
     private var mDay = 0
@@ -22,20 +24,36 @@ class DoctorActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDokterHewanBinding.inflate(layoutInflater)
+        binding = ActivityDoctorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         title = getString(R.string.animalDoctor)
 
-        binding.tvOutlet.setOnClickListener(this)
         binding.tvBookingDate.setOnClickListener(this)
         binding.tvBookingTime.setOnClickListener(this)
+
+        val spinnerLanguages = findViewById<Spinner>(R.id.tvOutlet)
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.OutletName,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+        spinnerLanguages.adapter = adapter
     }
 
     override fun onClick(v: View) {
         if(v == binding.tvOutlet) {
-            val intent = Intent(this@DoctorActivity, OutletActivity::class.java)
-            startActivity(intent)
+            val c = Calendar.getInstance()
+            mYear = c[Calendar.YEAR]
+            mMonth = c[Calendar.MONTH]
+            mDay = c[Calendar.DAY_OF_MONTH]
+
+            val datePickerDialog = DatePickerDialog(this, { _, year, monthOfYear, dayOfMonth ->
+                binding.tvAddress.setText(dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+            }, mYear, mMonth, mDay)
+
+            datePickerDialog.show()
         }
         if (v === binding.tvBookingDate) {
             val c = Calendar.getInstance()

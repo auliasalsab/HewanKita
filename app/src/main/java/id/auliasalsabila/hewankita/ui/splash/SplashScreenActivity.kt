@@ -7,7 +7,9 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import id.auliasalsabila.hewankita.R
+import id.auliasalsabila.hewankita.data.session.UserSession
 import id.auliasalsabila.hewankita.ui.bottom.BottomActivity
+import id.auliasalsabila.hewankita.ui.login.LoginActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
@@ -17,16 +19,10 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
         supportActionBar?.hide()
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this@SplashScreenActivity, BottomActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, 2000)
-
-        /*val login = UserSession(this).isLogin()
+        val login = UserSession(this).isLogin()
         Handler(Looper.getMainLooper()).postDelayed({
             if (login) {
-                val intent = Intent(this@SplashScreenActivity, HomeActivity::class.java)
+                val intent = Intent(this@SplashScreenActivity, BottomActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
@@ -34,6 +30,6 @@ class SplashScreenActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-        }, 2000) */
+        }, 2000)
     }
 }

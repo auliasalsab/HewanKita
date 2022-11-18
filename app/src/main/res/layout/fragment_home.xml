@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_color"
+    android:background="@color/secondary_color"
     tools:context=".ui.bottom.ui.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,7 @@
             android:text="@string/title1"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/secondary_color"
             app:layout_constraintStart_toEndOf="@id/ivLogo"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +57,7 @@
             android:text="@string/title2"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/secondary_color"
             app:layout_constraintStart_toEndOf="@id/ivLogo"
             app:layout_constraintTop_toBottomOf="@id/tvTitle1"/>
 
@@ -69,7 +69,7 @@
             android:text="@string/title3"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/secondary_color"
             app:layout_constraintStart_toEndOf="@id/ivLogo"
             app:layout_constraintTop_toBottomOf="@id/tvTitle2"/>
 
@@ -82,7 +82,7 @@
             android:layout_marginStart="8dp"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/secondary_color"
             app:layout_constraintStart_toEndOf="@id/ivLogo"
             app:layout_constraintTop_toBottomOf="@id/tvTitle3"/>
 
@@ -98,6 +98,19 @@
             android:contentDescription="@string/logo"
             app:srcCompat="@drawable/doctor"/>
 
+        <TextView
+            android:id="@+id/tvDoctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/animalDoctor"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="140dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/secondary_color"
+            app:layout_constraintStart_toStartOf="@id/ivDoctor"
+            app:layout_constraintTop_toBottomOf="@id/ivBackground"/>
+
         <ImageView
             android:id="@+id/ivConsultation"
             android:layout_width="155dp"
@@ -110,6 +123,19 @@
             android:contentDescription="@string/logo"
             app:srcCompat="@drawable/consultation"/>
 
+        <TextView
+            android:id="@+id/tvConsultation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/consultation"
+            android:layout_marginEnd="42dp"
+            android:layout_marginTop="138dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/secondary_color"
+            app:layout_constraintEnd_toEndOf="@id/ivConsultation"
+            app:layout_constraintTop_toBottomOf="@id/ivBackground"/>
+
         <ImageView
             android:id="@+id/ivGrooming"
             android:layout_width="155dp"
@@ -121,6 +147,19 @@
             app:layout_constraintStart_toStartOf="@id/ivBackground"
             android:contentDescription="@string/logo"
             app:srcCompat="@drawable/grooming"/>
+
+        <TextView
+            android:id="@+id/tvGrooming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/grooming"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="310dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/secondary_color"
+            app:layout_constraintStart_toStartOf="@id/ivGrooming"
+            app:layout_constraintTop_toBottomOf="@id/ivBackground"/>
 
         <ImageView
             android:id="@+id/ivCare"
@@ -135,6 +174,19 @@
             android:contentDescription="@string/logo"
             app:srcCompat="@drawable/care"/>
 
+        <TextView
+            android:id="@+id/tvCare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/care"
+            android:layout_marginEnd="65dp"
+            android:layout_marginTop="310dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/secondary_color"
+            app:layout_constraintEnd_toEndOf="@id/ivCare"
+            app:layout_constraintTop_toBottomOf="@id/ivBackground"/>
+
         <ImageView
             android:id="@+id/ivVaccination"
             android:layout_width="155dp"
@@ -148,5 +200,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="@string/logo"
             app:srcCompat="@drawable/vaccination"/>
+
+        <TextView
+            android:id="@+id/tvVaccination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vaccination"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="480dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/secondary_color"
+            app:layout_constraintStart_toStartOf="@id/ivVaccination"
+            app:layout_constraintTop_toBottomOf="@id/ivBackground"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import id.auliasalsabila.hewankita.R
 import id.auliasalsabila.hewankita.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -21,6 +22,8 @@ class ProfileFragment : Fragment() {
     ): View {
         val profileViewModel =
             ViewModelProvider(this).get(ProfileViewModel::class.java)
+
+        getActivity()?.setTitle(R.string.title_profile);
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root

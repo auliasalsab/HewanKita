@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.view.View
 import id.auliasalsabila.hewankita.R
 import id.auliasalsabila.hewankita.databinding.ActivityCareBinding
-import id.auliasalsabila.hewankita.databinding.ActivityDokterHewanBinding
 import id.auliasalsabila.hewankita.ui.outlet.OutletActivity
 
 class CareActivity : AppCompatActivity(), View.OnClickListener {

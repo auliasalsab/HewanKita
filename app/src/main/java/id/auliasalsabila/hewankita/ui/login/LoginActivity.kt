@@ -1,6 +1,5 @@
 package id.auliasalsabila.hewankita.ui.login
 
-/*
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,9 +7,13 @@ import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import id.auliasalsabila.hewankita.ui.home.HomeActivity
+import id.auliasalsabila.hewankita.data.Result
 import id.auliasalsabila.hewankita.R
+import id.auliasalsabila.hewankita.data.remote.response.LoginResult
+import id.auliasalsabila.hewankita.data.session.UserSession
 import id.auliasalsabila.hewankita.databinding.ActivityLoginBinding
+import id.auliasalsabila.hewankita.utils.ViewModelFactory
+import id.auliasalsabila.hewankita.ui.bottom.BottomActivity
 import id.auliasalsabila.hewankita.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -37,38 +40,36 @@ class LoginActivity : AppCompatActivity() {
                     etEmail.text.toString(),
                     etPassword.text.toString()
                 ).observe(this@LoginActivity) {
-                    if (it != null) {
-                        when (it) {
-                            is Result.Loading -> {
-                                binding.progressBar.visibility = View.VISIBLE
-                            }
-                            is Result.Success -> {
-                                binding.progressBar.visibility = View.GONE
-                                pref.getUser(
-                                    LoginResult(
-                                        name = it.data.name,
-                                        token = it.data.token,
-                                        isLogin = true
-                                    )
+                    if (it != null)when (it) {
+                        is Result.Loading -> {
+                            binding.progressBar.visibility = View.VISIBLE
+                        }
+                        is Result.Success -> {
+                            binding.progressBar.visibility = View.GONE
+                            pref.getUser(
+                                LoginResult(
+                                    name = it.data.name,
+                                    token = it.data.token,
+                                    isLogin = true
                                 )
-                                val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                startActivity(intent)
-                                finish()
-                                Toast.makeText(
-                                    this@LoginActivity,
-                                    resources.getString(R.string.login_success),
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            is Result.Error -> {
-                                binding.progressBar.visibility = View.GONE
-                                Toast.makeText(
-                                    this@LoginActivity,
-                                    resources.getString(R.string.login_error),
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
+                            )
+                            val intent = Intent(this@LoginActivity, BottomActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
+                            finish()
+                            Toast.makeText(
+                                this@LoginActivity,
+                                resources.getString(R.string.login_success),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        is Result.Error -> {
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(
+                                this@LoginActivity,
+                                resources.getString(R.string.login_error),
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }
@@ -89,4 +90,4 @@ class LoginActivity : AppCompatActivity() {
         super.onDestroy()
         _binding = null
     }
-}*/
+}

@@ -53,4 +53,9 @@
     <string name="title_home">Home</string>
     <string name="title_tips">Tips</string>
     <string name="title_profile">Profile</string>
+    <string name="fill_address">Mohon pilih outlet dahulu</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="consultation">Consultation</string>
+    <string name="care">Care</string>
 </resources>

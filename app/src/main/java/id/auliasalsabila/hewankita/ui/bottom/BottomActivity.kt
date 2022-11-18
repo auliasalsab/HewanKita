@@ -9,7 +9,6 @@ import id.auliasalsabila.hewankita.R
 import id.auliasalsabila.hewankita.databinding.ActivityBottomBinding
 
 class BottomActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityBottomBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
