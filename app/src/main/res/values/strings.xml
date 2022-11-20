@@ -33,22 +33,6 @@
     <string name="title2">tanya-tanya atau</string>
     <string name="title3">curhat ke dokter hewan?</string>
     <string name="title4">Yuk coba di aplikasi HewanKita aja!!!</string>
-
-    <string-array name="OutletName">
-        <item>HewanKita 1</item>
-        <item>HewanKita 2</item>
-        <item>HewanKita 3</item>
-        <item>HewanKita 4</item>
-        <item>HewanKita 5</item>
-    </string-array>
-
-    <string-array name="OutletAddress">
-        <item>Jakarta</item>
-        <item>Bogor</item>
-        <item>Depok</item>
-        <item>Tangerang</item>
-        <item>Bekasi</item>
-    </string-array>
     <string name="title_activity_bottom">BottomActivity</string>
     <string name="title_home">Home</string>
     <string name="title_tips">Tips</string>
@@ -58,4 +42,11 @@
     <string name="logout">Logout</string>
     <string name="consultation">Consultation</string>
     <string name="care">Care</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hewankita1">Hewan Kita 1, Jakarta Selatan</string>
+    <string name="hewankita2">Hewan Kita 2, Tangerang Selatan</string>
+    <string name="close">Close</string>
+    <string name="choose1">Choose</string>
+    <string name="booking_success">Booking Success</string>
 </resources>

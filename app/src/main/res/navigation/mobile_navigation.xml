@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="id.auliasalsabila.hewankita.ui.bottom.ui.home.HomeFragment"
+        android:name="com.capstone.hewankita.ui.bottom.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_tips"
-        android:name="id.auliasalsabila.hewankita.ui.bottom.ui.tips.TipsFragment"
+        android:name="com.capstone.hewankita.ui.bottom.ui.tips.TipsFragment"
         android:label="@string/title_tips"
         tools:layout="@layout/fragment_tips" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="id.auliasalsabila.hewankita.ui.bottom.ui.profile.ProfileFragment"
+        android:name="com.capstone.hewankita.ui.bottom.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
