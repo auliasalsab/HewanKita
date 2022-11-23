@@ -49,4 +49,42 @@
     <string name="close">Close</string>
     <string name="choose1">Choose</string>
     <string name="booking_success">Booking Success</string>
+    <string name="imageViewProfile">Image Profile</string>
+    <string name="emailProfile">anabulmypet@gmail.com</string>
+    <string name="petName">Anabul</string>
+    <string name="imagepets">Image Pets</string>
+    <string name="my_pet">My Pet</string>
+    <string name="ic_arrow">ic_arrow</string>
+    <string name="ic_schedule">ic_schedule</string>
+    <string name="cek_jadwal">Cek Jadwal</string>
+    <string name="ic_settings">ic_settings</string>
+    <string name="edit_profil">Edit Profil</string>
+    <string name="informasi">Informasi</string>
+    <string name="ic_info">ic_info</string>
+    <string name="ic_logout">ic_logout</string>
+    <string name="add_your_image">Add Your Image</string>
+    <string name="no_hp">Handphone</string>
+    <string name="alamat">Alamat</string>
+    <string name="save">Simpan</string>
+    <string name="pet_age">9 bulan</string>
+    <string name="spesies">Spesies</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="berat">Berat</string>
+    <string name="warna_bulu">Warna Bulu</string>
+    <string name="ciri_lainnya">Ciri Lainnya</string>
+    <string name="optional">optional</string>
+    <string name="btnSave">save</string>
+    <string name="nama_jadwal">Nama Jadwal</string>
+    <string name="kategori">Kategori</string>
+    <string name="versi_1_0">Versi 1.0</string>
+    <string name="InformationLogo">Logo Halaman Informasi</string>
+    <string name="grupCapstone">Capstone Project Group C22-013</string>
+    <string name="selected_item">Selected category :</string>
+
+    <string-array name="SpinnerJadwal">
+        <item>Harian</item>
+        <item>Mingguan</item>
+        <item>Bulanan</item>
+    </string-array>
 </resources>

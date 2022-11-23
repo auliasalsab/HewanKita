@@ -16,7 +16,22 @@
         android:theme="@style/Theme.HewanKita"
         tools:targetApi="31">
         <activity
-            android:name="com.capstone.hewankita.ui.splash.SplashScreenActivity"
+            android:name=".InformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TambahJadwalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyPetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".splash.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,28 +40,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.capstone.hewankita.ui.register.RegisterActivity"
+            android:name=".register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name="com.capstone.hewankita.ui.login.LoginActivity"
+            android:name=".login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name="com.capstone.hewankita.ui.bottom.BottomActivity"
+            android:name=".bottom.BottomActivity"
             android:exported="false" />
         <activity
-            android:name="com.capstone.hewankita.ui.doctor.DoctorActivity"
+            android:name=".doctor.DoctorActivity"
             android:exported="false" />
         <activity
             android:name=".ui.consultation.ConsultationActivity"
             android:exported="false" />
         <activity
-            android:name="com.capstone.hewankita.ui.grooming.GroomingActivity"
+            android:name=".grooming.GroomingActivity"
             android:exported="false" />
         <activity
-            android:name="com.capstone.hewankita.ui.care.CareActivity"
+            android:name=".care.CareActivity"
             android:exported="false" />
         <activity
-            android:name="com.capstone.hewankita.ui.vaccination.VaccinationActivity"
+            android:name=".vaccination.VaccinationActivity"
             android:exported="false" />
     </application>
 

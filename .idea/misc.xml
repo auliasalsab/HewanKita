@@ -50,6 +50,27 @@
         <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/layout/activity_splash_screen.xml" value="0.18645833333333334" />
+        <entry key="..\:/project_android/HewanKita/app/src/main/res/layout/activity_information.xml" value="0.22447916666666667" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/drawable/cardviewbackground.xml" value="0.1" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/drawable/ic_baseline_arrow_forward.xml" value="0.1" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/drawable/ic_baseline_check.xml" value="0.1" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/drawable/ic_baseline_info.xml" value="0.1" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/drawable/ic_baseline_logout.xml" value="0.1" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/drawable/ic_baseline_pets.xml" value="0.1" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/drawable/ic_baseline_schedule.xml" value="0.1" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/drawable/ic_baseline_settings.xml" value="0.1" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/layout/activity_bottom.xml" value="0.22395833333333334" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/layout/activity_consultation.xml" value="0.22395833333333334" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/layout/activity_edit_profile.xml" value="0.22" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/layout/activity_information.xml" value="0.25" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/layout/activity_menu.xml" value="0.22395833333333334" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/layout/activity_my_pet.xml" value="0.25" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/layout/activity_profile.xml" value="0.22" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/layout/activity_tambah_jadwal.xml" value="0.22395833333333334" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/layout/fragment_menu.xml" value="0.22395833333333334" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/layout/fragment_option_dialog.xml" value="0.22395833333333334" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/layout/fragment_profile.xml" value="0.19444444444444445" />
+        <entry key="..\:/project_android/HewanKitaClone/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22395833333333334" />
       </map>
     </option>
   </component>
