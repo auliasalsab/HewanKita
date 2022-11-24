@@ -37,7 +37,7 @@ class ButtonValidation : AppCompatButton {
     }
 
     private fun btnDisabled() : CharSequence {
-        return context.getString(R.string.fill_in)
+        return context.getString(R.string.btnSave)
     }
 
     private fun init() {
