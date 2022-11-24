@@ -5,12 +5,16 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
+import com.capstone.hewankita.customview.ButtonValidation
+import com.capstone.hewankita.customview.EditTextValidation
 import com.capstone.hewankita.databinding.FragmentMenuBinding
 import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.utils.OptionDialogFragment
@@ -18,6 +22,11 @@ import com.capstone.hewankita.utils.OptionDialogFragment
 class DoctorFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var btnNext: ButtonValidation
+    private lateinit var tvOutlet: EditTextValidation
+    private lateinit var tvBookingDate: EditTextValidation
+    private lateinit var tvBookingTime: EditTextValidation
 
     private var mYear = 0
     private var mMonth = 0
@@ -40,7 +49,53 @@ class DoctorFragment : Fragment(), View.OnClickListener {
         binding.tvOutlet.setOnClickListener(this)
         binding.btnNext.setOnClickListener(this)
 
+        btnNext = binding.btnNext
+        tvOutlet = binding.tvOutlet
+        tvBookingDate = binding.tvBookingDate
+        tvBookingTime = binding.tvBookingTime
+
+        setButton()
+
+        tvOutlet.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                setButton()
+            }
+            override fun afterTextChanged(s: Editable) {
+            }
+        })
+
+        tvBookingDate.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                setButton()
+            }
+            override fun afterTextChanged(s: Editable) {
+            }
+        })
+
+        tvBookingTime.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                setButton()
+            }
+            override fun afterTextChanged(s: Editable) {
+            }
+        })
+
         return root
+    }
+
+    private fun setButton() {
+        val tvOutlet = tvOutlet.text
+        val tvBookingDate = tvBookingDate.text
+        val tvBookingTime = tvBookingTime.text
+        btnNext.isEnabled = tvOutlet != null && tvOutlet.toString().isNotEmpty() &&
+                tvBookingDate != null && tvBookingDate.toString().isNotEmpty() &&
+                tvBookingTime != null && tvBookingTime.toString().isNotEmpty()
     }
 
     override fun onClick(v: View?) {

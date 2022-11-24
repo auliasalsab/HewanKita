@@ -3,7 +3,7 @@
     <string name="outlet">Outlet</string>
     <string name="bookingDate">Booking Date</string>
     <string name="bookingTime">Booking Time</string>
-    <string name="choose">-- Choose --</string>
+    <string name="click">Please double click</string>
     <string name="search">Search</string>
     <string name="address">Address</string>
     <string name="checkIn">Check In</string>
@@ -81,6 +81,8 @@
     <string name="InformationLogo">Logo Halaman Informasi</string>
     <string name="grupCapstone">Capstone Project Group C22-013</string>
     <string name="selected_item">Selected category :</string>
+    <string name="validation">Data cannot be empty</string>
+    <string name="fill_in">please fill in first</string>
 
     <string-array name="SpinnerJadwal">
         <item>Harian</item>
