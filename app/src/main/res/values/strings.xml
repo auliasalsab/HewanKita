@@ -86,7 +86,7 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="type">Type</string>
-    <string name="check_schedule">Doctor Schedule</string>
+    <string name="check_schedule">Check Schedule</string>
     <string name="doctor_schedule">Doctor Schedule</string>
     <string name="care_schedule">Care Schedule</string>
     <string name="grooming_schedule">Grooming Schedule</string>

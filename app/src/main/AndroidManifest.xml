@@ -34,9 +34,6 @@
             android:name=".ui.information.InformationActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tambahJadwal.TambahJadwalActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.myPet.MyPetActivity"
             android:exported="false" />
         <activity
