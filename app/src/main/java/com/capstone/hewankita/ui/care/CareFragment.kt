@@ -5,12 +5,16 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
+import com.capstone.hewankita.customview.ButtonValidation
+import com.capstone.hewankita.customview.EditTextValidation
 import com.capstone.hewankita.databinding.FragmentCareBinding
 import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.utils.OptionDialogFragment
@@ -18,6 +22,12 @@ import com.capstone.hewankita.utils.OptionDialogFragment
 class CareFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentCareBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var btnNext: ButtonValidation
+    private lateinit var tvOutlet: EditTextValidation
+    private lateinit var tvCheckIn: EditTextValidation
+    private lateinit var tvCheckOut: EditTextValidation
+    private lateinit var tvTimeOfArrival: EditTextValidation
 
     private var mYear = 0
     private var mMonth = 0
@@ -41,7 +51,66 @@ class CareFragment : Fragment(), View.OnClickListener {
         binding.tvTimeOfArrival.setOnClickListener(this)
         binding.btnNext.setOnClickListener(this)
 
+        btnNext = binding.btnNext
+        tvOutlet = binding.tvOutlet
+        tvCheckIn = binding.tvCheckIn
+        tvCheckOut = binding.tvCheckOut
+        tvTimeOfArrival = binding.tvTimeOfArrival
+
+        setButton()
+
+        tvOutlet.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                setButton()
+            }
+            override fun afterTextChanged(s: Editable) {
+            }
+        })
+
+        tvCheckIn.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                setButton()
+            }
+            override fun afterTextChanged(s: Editable) {
+            }
+        })
+
+        tvCheckOut.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                setButton()
+            }
+            override fun afterTextChanged(s: Editable) {
+            }
+        })
+
+        tvTimeOfArrival.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                setButton()
+            }
+            override fun afterTextChanged(s: Editable) {
+            }
+        })
+
         return root
+    }
+
+    private fun setButton() {
+        val tvOutlet = tvOutlet.text
+        val tvCheckIn = tvCheckIn.text
+        val tvCheckOut = tvCheckOut.text
+        val tvTimeOfArrival = tvTimeOfArrival.text
+        btnNext.isEnabled = tvOutlet != null && tvOutlet.toString().isNotEmpty() &&
+                tvCheckIn != null && tvCheckIn.toString().isNotEmpty() &&
+                tvCheckOut != null && tvCheckOut.toString().isNotEmpty() &&
+                tvTimeOfArrival != null && tvTimeOfArrival.toString().isNotEmpty()
     }
 
     override fun onClick(v: View?) {
@@ -85,31 +154,12 @@ class CareFragment : Fragment(), View.OnClickListener {
 
             timePickerDialog.show()
         }
-        if (v == binding.btnNext) {
-            var isEmptyFields = false
 
-            if(binding.tvOutlet.text.isEmpty()) {
-                isEmptyFields = true
-                binding.tvOutlet.error = "Nilai tidak boleh kosong"
-            }
-            if(binding.tvCheckIn.text.isEmpty()) {
-                isEmptyFields = true
-                binding.tvCheckIn.error = "Nilai tidak boleh kosong"
-            }
-            if(binding.tvCheckOut.text.isEmpty()) {
-                isEmptyFields = true
-                binding.tvCheckOut.error = "Nilai tidak boleh kosong"
-            }
-            if(binding.tvTimeOfArrival.text.isEmpty()) {
-                isEmptyFields = true
-                binding.tvTimeOfArrival.error = "Nilai tidak boleh kosong"
-            }
-            if(!isEmptyFields) {
-                val intent = Intent(requireActivity(), BottomActivity::class.java)
-                startActivity(intent)
-                Toast.makeText(requireActivity(), resources.getString(R.string.booking_success), Toast.LENGTH_SHORT).show()
-                activity?.finish()
-            }
+        if(v == binding.btnNext) {
+            val intent = Intent(requireActivity(), BottomActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(requireActivity(), resources.getString(R.string.booking_success), Toast.LENGTH_SHORT).show()
+            activity?.finish()
         }
     }
 

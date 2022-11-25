@@ -16,23 +16,20 @@
         android:theme="@style/Theme.HewanKita"
         tools:targetApi="31">
         <activity
-            android:name=".ui.CekJadwalActivity"
+            android:name=".ui.cekJadwal.CekJadwalActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.InformationActivity"
+            android:name=".ui.information.InformationActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.TambahJadwalActivity"
+            android:name=".ui.tambahJadwal.TambahJadwalActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MyPetActivity"
+            android:name=".ui.myPet.MyPetActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.EditProfileActivity"
+            android:name=".ui.editProfile.EditProfileActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.splash.SplashScreenActivity"
-            android:exported="true"/>
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false" />
@@ -41,6 +38,10 @@
             android:exported="false" />
         <activity
             android:name=".ui.bottom.BottomActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".ui.splash.SplashScreenActivity"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
