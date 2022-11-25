@@ -2,8 +2,8 @@ package com.capstone.hewankita.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.capstone.hewankita.R
 
-import id.auliasalsabila.hewankita.R
 
 class EditProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
