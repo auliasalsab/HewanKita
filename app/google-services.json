@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "654096082281",
+    "project_id": "hewankita-e9837",
+    "storage_bucket": "hewankita-e9837.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654096082281:android:96f708c5d9a8083338c9f8",
+        "android_client_info": {
+          "package_name": "com.example.hewankita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654096082281-6jhmhtftg7pqjneq7c6dres8764qnusk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPgCbIrasNNh3FwWoVs4b8SNM0qIuFJkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654096082281-6jhmhtftg7pqjneq7c6dres8764qnusk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654096082281:android:7e0681844a2c2ddd38c9f8",
+        "android_client_info": {
+          "package_name": "id.auliasalsabila.hewankita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654096082281-6jhmhtftg7pqjneq7c6dres8764qnusk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPgCbIrasNNh3FwWoVs4b8SNM0qIuFJkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654096082281-6jhmhtftg7pqjneq7c6dres8764qnusk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
