@@ -79,14 +79,17 @@
     <string name="kategori">Kategori</string>
     <string name="versi_1_0">Versi 1.0</string>
     <string name="InformationLogo">Logo Halaman Informasi</string>
-    <string name="grupCapstone">Capstone Project Group C22-013</string>
+    <string name="group_capstone">Capstone Project Group C22-013</string>
     <string name="selected_item">Selected category :</string>
     <string name="validation">Data cannot be empty</string>
     <string name="fill_in">please fill in first</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="type">Type</string>
+    <string name="check_schedule">Doctor Schedule</string>
+    <string name="doctor_schedule">Doctor Schedule</string>
+    <string name="care_schedule">Care Schedule</string>
+    <string name="grooming_schedule">Grooming Schedule</string>
+    <string name="vaccination_schedule">Vaccination Schedule</string>
 
-    <string-array name="SpinnerJadwal">
-        <item>Harian</item>
-        <item>Mingguan</item>
-        <item>Bulanan</item>
-    </string-array>
 </resources>

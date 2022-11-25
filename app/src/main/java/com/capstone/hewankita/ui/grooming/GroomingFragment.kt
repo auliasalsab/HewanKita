@@ -2,6 +2,7 @@ package com.capstone.hewankita.ui.grooming
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.ContentValues
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -15,8 +16,10 @@ import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
 import com.capstone.hewankita.customview.ButtonValidation
 import com.capstone.hewankita.customview.EditTextValidation
+import com.capstone.hewankita.data.local.database.DatabaseContract
+import com.capstone.hewankita.data.local.database.ScheduleHelper
+import com.capstone.hewankita.data.local.entity.ScheduleAll
 import com.capstone.hewankita.databinding.FragmentMenuBinding
-import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.utils.OptionDialogFragment
 
 class GroomingFragment : Fragment(), View.OnClickListener {
@@ -33,6 +36,10 @@ class GroomingFragment : Fragment(), View.OnClickListener {
     private var mDay = 0
     private var mHour = 0
     private var mMinute = 0
+
+    private var scheduleAll: ScheduleAll? = null
+    private var position: Int = 0
+    private lateinit var scheduleHelper: ScheduleHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -86,6 +93,9 @@ class GroomingFragment : Fragment(), View.OnClickListener {
             }
         })
 
+        scheduleHelper = ScheduleHelper.getInstance(requireContext())
+        scheduleHelper.open()
+
         return root
     }
 
@@ -128,10 +138,33 @@ class GroomingFragment : Fragment(), View.OnClickListener {
             timePickerDialog.show()
         }
         if (v == binding.btnNext) {
-            val intent = Intent(requireActivity(), BottomActivity::class.java)
-            startActivity(intent)
-            Toast.makeText(requireActivity(), resources.getString(R.string.booking_success), Toast.LENGTH_SHORT).show()
-            activity?.finish()
+            val outlet = binding.tvOutlet.text.toString().trim()
+            val bookingDate = binding.tvBookingDate.text.toString().trim()
+            val bookingTime = binding.tvBookingTime.text.toString().trim()
+
+            scheduleAll?.outlet = outlet
+            scheduleAll?.booking_date = bookingDate
+            scheduleAll?.booking_time = bookingTime
+
+            val intent = Intent()
+            intent.putExtra(EXTRA_SCHEDULE, scheduleAll)
+            intent.putExtra(EXTRA_SCHEDULE, position)
+
+            val values = ContentValues()
+            values.put(DatabaseContract.GroomingColumns.OUTLET, outlet)
+            values.put(DatabaseContract.GroomingColumns.BOOKING_DATE, bookingDate)
+            values.put(DatabaseContract.GroomingColumns.BOOKING_TIME, bookingTime)
+
+            val result = scheduleHelper.insertTableGrooming(values)
+
+            if (result > 0) {
+                scheduleAll?.id = result.toInt()
+                Toast.makeText(requireActivity(), resources.getString(R.string.booking_success), Toast.LENGTH_SHORT).show()
+                activity?.setResult(RESULT_ADD, intent)
+                activity?.finish()
+            } else {
+                Toast.makeText(requireActivity(), "Gagal menambah data", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -144,5 +177,10 @@ class GroomingFragment : Fragment(), View.OnClickListener {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val EXTRA_SCHEDULE = "extra_schedule"
+        const val RESULT_ADD = 101
     }
 }

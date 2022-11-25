@@ -11,7 +11,7 @@ import com.capstone.hewankita.R
 import com.capstone.hewankita.data.remote.response.LoginResult
 import com.capstone.hewankita.data.session.UserSession
 import com.capstone.hewankita.databinding.FragmentProfileBinding
-import com.capstone.hewankita.ui.cekJadwal.CekJadwalActivity
+import com.capstone.hewankita.ui.check_schedule.CheckSchedule
 import com.capstone.hewankita.ui.editProfile.EditProfileActivity
 import com.capstone.hewankita.ui.information.InformationActivity
 import com.capstone.hewankita.ui.myPet.MyPetActivity
@@ -48,7 +48,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             startActivity(intent)
         }
         if(v == binding.column2) {
-            val intent = Intent(requireActivity(), CekJadwalActivity::class.java)
+            val intent = Intent(requireActivity(), CheckSchedule::class.java)
             startActivity(intent)
         }
         if(v == binding.column3) {

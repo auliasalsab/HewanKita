@@ -2,6 +2,7 @@ package com.capstone.hewankita.ui.care
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.ContentValues
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -15,8 +16,10 @@ import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
 import com.capstone.hewankita.customview.ButtonValidation
 import com.capstone.hewankita.customview.EditTextValidation
+import com.capstone.hewankita.data.local.database.DatabaseContract
+import com.capstone.hewankita.data.local.database.ScheduleHelper
+import com.capstone.hewankita.data.local.entity.ScheduleCare
 import com.capstone.hewankita.databinding.FragmentCareBinding
-import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.utils.OptionDialogFragment
 
 class CareFragment : Fragment(), View.OnClickListener {
@@ -34,6 +37,10 @@ class CareFragment : Fragment(), View.OnClickListener {
     private var mDay = 0
     private var mHour = 0
     private var mMinute = 0
+
+    private var scheduleCare: ScheduleCare? = null
+    private var position: Int = 0
+    private lateinit var scheduleHelper: ScheduleHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -99,6 +106,9 @@ class CareFragment : Fragment(), View.OnClickListener {
             }
         })
 
+        scheduleHelper = ScheduleHelper.getInstance(requireContext())
+        scheduleHelper.open()
+
         return root
     }
 
@@ -156,10 +166,35 @@ class CareFragment : Fragment(), View.OnClickListener {
         }
 
         if(v == binding.btnNext) {
-            val intent = Intent(requireActivity(), BottomActivity::class.java)
-            startActivity(intent)
-            Toast.makeText(requireActivity(), resources.getString(R.string.booking_success), Toast.LENGTH_SHORT).show()
-            activity?.finish()
+            val outlet = binding.tvOutlet.text.toString().trim()
+            val checkIn = binding.tvCheckIn.text.toString().trim()
+            val checkOut = binding.tvCheckOut.text.toString().trim()
+            val timeOfArrival = binding.tvTimeOfArrival.text.toString().trim()
+
+            scheduleCare?.outlet = outlet
+            scheduleCare?.check_in = checkIn
+            scheduleCare?.check_out = checkOut
+            scheduleCare?.time_of_arrival = timeOfArrival
+
+            val intent = Intent()
+            intent.putExtra(EXTRA_SCHEDULE, scheduleCare)
+            intent.putExtra(EXTRA_SCHEDULE, position)
+
+            val values = ContentValues()
+            values.put(DatabaseContract.CareColumns.OUTLET, outlet)
+            values.put(DatabaseContract.CareColumns.CHECK_IN, checkIn)
+            values.put(DatabaseContract.CareColumns.CHECK_OUT, checkOut)
+            values.put(DatabaseContract.CareColumns.TIME_OF_ARRIVAL, timeOfArrival)
+            val result = scheduleHelper.insertTableCare(values)
+
+            if (result > 0) {
+                scheduleCare?.id = result.toInt()
+                Toast.makeText(requireActivity(), resources.getString(R.string.booking_success), Toast.LENGTH_SHORT).show()
+                activity?.setResult(RESULT_ADD, intent)
+                activity?.finish()
+            } else {
+                Toast.makeText(requireActivity(), "Gagal menambah data", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -172,5 +207,10 @@ class CareFragment : Fragment(), View.OnClickListener {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val EXTRA_SCHEDULE = "extra_schedule"
+        const val RESULT_ADD = 101
     }
 }
