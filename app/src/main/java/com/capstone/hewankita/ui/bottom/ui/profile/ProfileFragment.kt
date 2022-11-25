@@ -11,10 +11,10 @@ import com.capstone.hewankita.R
 import com.capstone.hewankita.data.remote.response.LoginResult
 import com.capstone.hewankita.data.session.UserSession
 import com.capstone.hewankita.databinding.FragmentProfileBinding
-import com.capstone.hewankita.ui.CekJadwalActivity
-import com.capstone.hewankita.ui.EditProfileActivity
-import com.capstone.hewankita.ui.InformationActivity
-import com.capstone.hewankita.ui.MyPetActivity
+import com.capstone.hewankita.ui.cekJadwal.CekJadwalActivity
+import com.capstone.hewankita.ui.editProfile.EditProfileActivity
+import com.capstone.hewankita.ui.information.InformationActivity
+import com.capstone.hewankita.ui.myPet.MyPetActivity
 import com.capstone.hewankita.ui.login.LoginActivity
 
 class ProfileFragment : Fragment(), View.OnClickListener {

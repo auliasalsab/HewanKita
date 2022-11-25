@@ -1,4 +1,4 @@
-package com.capstone.hewankita.ui
+package com.capstone.hewankita.ui.editProfile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
