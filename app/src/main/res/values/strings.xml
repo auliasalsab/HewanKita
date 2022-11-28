@@ -92,4 +92,43 @@
     <string name="grooming_schedule">Grooming Schedule</string>
     <string name="vaccination_schedule">Vaccination Schedule</string>
 
+    <string-array name="deskripsi">
+        <item>Cara Merawat Hewan Peliharaan dirumah</item>
+        <item>Cara memandikan Kucing yang benar dan aman</item>
+        <item>Waktu yang tepat dan cara memberi makan kucing yang benar</item>
+        <item>Cara memandikan anjing</item>
+        <item>Pertolongan pertama saat hewan sakit</item>
+        <item>Cara menghitung umur hewan peliharaan</item>
+        <item>Waktu terbaik untuk Grooming</item>
+        <item>Tips dan alat yang digunakan untuk grooming</item>
+        <item>Cara melatih anjing jadi pintar dan penurut</item>
+        <item>Tips bawa hewan peliharaan sata mudik atau perjalanan jauh</item>
+    </string-array>
+
+    <string-array name="judul">
+        <item>Cara Merawat Hewan Peliharaan dirumah</item>
+        <item>Cara memandikan Kucing yang benar dan aman</item>
+        <item>Waktu yang tepat dan cara memberi makan kucing yang benar</item>
+        <item>Cara memandikan anjing</item>
+        <item>Pertolongan pertama saat hewan sakit</item>
+        <item>Cara menghitung umur hewan peliharaan</item>
+        <item>Waktu terbaik untuk Grooming</item>
+        <item>Tips dan alat yang digunakan untuk grooming</item>
+        <item>Cara melatih anjing jadi pintar dan penurut</item>
+        <item>Tips bawa hewan peliharaan sata mudik atau perjalanan jauh</item>
+    </string-array>
+
+    <integer-array name="photo">
+        <item>@drawable/artikel1</item>
+        <item>@drawable/artikel2</item>
+        <item>@drawable/artikel3</item>
+        <item>@drawable/artikel4</item>
+        <item>@drawable/artikel5</item>
+        <item>@drawable/artikel6</item>
+        <item>@drawable/artikel7</item>
+        <item>@drawable/artikel8</item>
+        <item>@drawable/artikel9</item>
+        <item>@drawable/artikel10</item>
+    </integer-array>
+
 </resources>

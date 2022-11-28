@@ -16,6 +16,9 @@
         android:theme="@style/Theme.HewanKita"
         tools:targetApi="31">
         <activity
+            android:name=".DetailTips"
+            android:exported="false" />
+        <activity
             android:name=".ui.check_schedule.GroomingScheduleActivity"
             android:exported="false" />
         <activity
