@@ -57,7 +57,7 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/container2"
             android:layout_width="match_parent"
             android:layout_height="600dp"
@@ -110,7 +110,6 @@
                 android:orientation="horizontal"
                 android:padding="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_below="@id/column1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -146,7 +145,6 @@
                 android:orientation="horizontal"
                 android:padding="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/column2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
@@ -183,8 +181,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/column3"
+                android:layout_gravity="center"
                 android:background="@color/gray"/>
 
             <LinearLayout
@@ -192,7 +189,6 @@
                 android:orientation="horizontal"
                 android:padding="10dp"
                 android:layout_marginTop="40dp"
-                android:layout_below="@+id/column3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
@@ -228,7 +224,6 @@
                 android:padding="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_below="@+id/column4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
@@ -257,7 +252,7 @@
                     android:src="@drawable/ic_baseline_arrow_forward"
                     android:contentDescription="@string/ic_arrow" />
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -2,9 +2,8 @@ package com.capstone.hewankita.ui.bottom.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.provider.Settings
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
@@ -73,6 +72,42 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             activity?.finish()
             true
         }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.option_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.localization -> {
+                startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+                true
+            }
+            R.id.logout -> {
+                pref.getUser(
+                    LoginResult(
+                        name = null,
+                        token = null,
+                        isLogin = false
+                    )
+                )
+                val intent = Intent(requireActivity(), LoginActivity::class.java)
+                startActivity(intent)
+                Toast.makeText(requireActivity(), resources.getString(R.string.logout_success), Toast.LENGTH_SHORT).show()
+                activity?.finish()
+                true
+            }
+            else -> false
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
     }
 
     override fun onDestroyView() {

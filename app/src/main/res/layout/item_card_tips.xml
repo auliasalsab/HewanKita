@@ -17,8 +17,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_item_photo"
-            android:layout_width="300px"
-            android:layout_height="300px"
+            android:layout_width="250px"
+            android:layout_height="250px"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_background"/>
 
