@@ -64,7 +64,7 @@ class CareScheduleActivity : AppCompatActivity() {
                 adapter.listScheduleCare = schedule
             } else {
                 adapter.listScheduleCare = ArrayList()
-                showSnackbarMessage("Tidak ada data saat ini")
+                showSnackbarMessage(getString(R.string.no_data))
             }
             scheduleHelper.close()
         }

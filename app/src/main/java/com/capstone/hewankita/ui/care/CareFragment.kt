@@ -21,6 +21,7 @@ import com.capstone.hewankita.data.local.database.ScheduleHelper
 import com.capstone.hewankita.data.local.entity.ScheduleCare
 import com.capstone.hewankita.databinding.FragmentCareBinding
 import com.capstone.hewankita.utils.OptionDialogFragment
+import java.text.SimpleDateFormat
 
 class CareFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentCareBinding? = null
@@ -136,9 +137,11 @@ class CareFragment : Fragment(), View.OnClickListener {
             mDay = c[Calendar.DAY_OF_MONTH]
 
             val datePickerDialog = DatePickerDialog(requireContext(), { _, year, monthOfYear, dayOfMonth ->
-                binding.tvCheckIn.setText(dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                binding.tvCheckIn.setText(StringBuilder("$dayOfMonth-${monthOfYear + 1}-$year"))
             }, mYear, mMonth, mDay)
 
+            datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
+            datePickerDialog.datePicker.maxDate = System.currentTimeMillis() - 1000
             datePickerDialog.show()
         }
         if (v === binding.tvCheckOut) {
@@ -148,28 +151,46 @@ class CareFragment : Fragment(), View.OnClickListener {
             mDay = c[Calendar.DAY_OF_MONTH]
 
             val datePickerDialog = DatePickerDialog(requireContext(), { _, year, monthOfYear, dayOfMonth ->
-                binding.tvCheckOut.setText(dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                binding.tvCheckOut.setText(StringBuilder("$dayOfMonth-${monthOfYear + 1}-$year"))
             }, mYear, mMonth, mDay)
 
+            datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
             datePickerDialog.show()
         }
         if (v === binding.tvTimeOfArrival) {
+            var amPm = ""
             val c = Calendar.getInstance()
             mHour = c[Calendar.HOUR_OF_DAY]
             mMinute = c[Calendar.MINUTE]
 
-            val timePickerDialog = TimePickerDialog(requireContext(), { _, hourOfDay, minute ->
-                binding.tvTimeOfArrival.setText("$hourOfDay:$minute")
-            }, mHour, mMinute, true)
+            val timePicker = TimePickerDialog(requireActivity(), { _, hourOfDay, minute ->
+                c.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                c.set(Calendar.MINUTE, minute)
+                if(c.get(Calendar.AM_PM) == Calendar.AM) {
+                    amPm = "AM"
+                } else if(c.get(Calendar.AM_PM) == Calendar.PM) {
+                    amPm = "PM"
+                }
+                val hrs = if(c.get(Calendar.HOUR) == 0) "12" else c.get(Calendar.HOUR).toString()
+                val showHrs = if(c.get(Calendar.HOUR) <= 9 && c.get(Calendar.HOUR) != 0) "0$hrs" else hrs
+                val showMinutes = if(c.get(Calendar.MINUTE) <= 9) "0${c.get(Calendar.MINUTE)}" else "${c.get(Calendar.MINUTE)}"
+                val time = "$showHrs:$showMinutes $amPm"
+                if(!compareTwoTimes(getCurrentTime()!!,time)) {
+                    binding.tvTimeOfArrival.setText(getString(R.string.cannot_use_past_time))
+                }
+                else {
+                    binding.tvTimeOfArrival.setText(time)
+                }
 
-            timePickerDialog.show()
+            }, mHour, mMinute, false)
+
+            timePicker.show()
         }
-
         if(v == binding.btnNext) {
             val outlet = binding.tvOutlet.text.toString().trim()
-            val checkIn = binding.tvCheckIn.text.toString().trim()
-            val checkOut = binding.tvCheckOut.text.toString().trim()
-            val timeOfArrival = binding.tvTimeOfArrival.text.toString().trim()
+            val checkIn = "${getString(R.string.checkIn)}:  ${binding.tvCheckIn.text.toString().trim()}"
+            val checkOut = "${getString(R.string.checkOut)}:  ${binding.tvCheckOut.text.toString().trim()}"
+            val timeOfArrival = "${getString(R.string.timeOfArrival)}:  ${binding.tvTimeOfArrival.text.toString().trim()}"
 
             scheduleCare?.outlet = outlet
             scheduleCare?.check_in = checkIn
@@ -193,9 +214,21 @@ class CareFragment : Fragment(), View.OnClickListener {
                 activity?.setResult(RESULT_ADD, intent)
                 activity?.finish()
             } else {
-                Toast.makeText(requireActivity(), "Gagal menambah data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(), getString(R.string.booking_failed), Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun getCurrentTime(): String? {
+        val simpleDateFormat = SimpleDateFormat("hh:mm a")
+        return simpleDateFormat.format(Calendar.getInstance().time)
+    }
+
+    private fun compareTwoTimes(fromTime: String, currentTime : String): Boolean {
+        val sdf = SimpleDateFormat("hh:mm a")
+        val time1 = sdf.parse(fromTime)
+        val time2 = sdf.parse(currentTime)
+        return !time2!!.before(time1)
     }
 
     internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener = object : OptionDialogFragment.OnOptionDialogListener {

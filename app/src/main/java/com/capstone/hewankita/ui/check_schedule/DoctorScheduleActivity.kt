@@ -64,7 +64,7 @@ class DoctorScheduleActivity : AppCompatActivity() {
                 adapter.listScheduleAll = schedule
             } else {
                 adapter.listScheduleAll = ArrayList()
-                showSnackbarMessage("Tidak ada data saat ini")
+                showSnackbarMessage(getString(R.string.no_data))
             }
             scheduleHelper.close()
         }
