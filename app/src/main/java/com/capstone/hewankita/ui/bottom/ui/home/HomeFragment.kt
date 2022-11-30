@@ -63,14 +63,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
         }
     }
 
-<<<<<<< Updated upstream
-    override fun onCreate(savedInstanceState: Bundle?) {
-        setHasOptionsMenu(true)
-        super.onCreate(savedInstanceState)
-    }
-
-=======
->>>>>>> Stashed changes
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
