@@ -89,6 +89,7 @@
     <string name="grooming_schedule">Grooming Schedule</string>
     <string name="vaccination_schedule">Vaccination Schedule</string>
     <string name="cannot_use_past_time">Cannot use past time</string>
+<<<<<<< Updated upstream
     <string name="no_data">No data at this time</string>
     <string name="booking_failed">"Booking Failed"</string>
 
@@ -131,4 +132,8 @@
         <item>@drawable/artikel10</item>
     </integer-array>
 
+=======
+    <string name="no_data">Tidak ada data saat ini</string>
+    <string name="booking_failed">"Booking Failed"</string>
+>>>>>>> Stashed changes
 </resources>

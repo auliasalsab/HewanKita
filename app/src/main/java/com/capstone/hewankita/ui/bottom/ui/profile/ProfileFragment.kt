@@ -70,7 +70,6 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             startActivity(intent)
             Toast.makeText(requireActivity(), resources.getString(R.string.logout_success), Toast.LENGTH_SHORT).show()
             activity?.finish()
-            true
         }
     }
 
