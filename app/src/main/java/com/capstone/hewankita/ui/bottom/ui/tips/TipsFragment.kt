@@ -28,9 +28,13 @@ class TipsFragment : Fragment() {
 
     ): View {
         val tipsViewModel =
-            ViewModelProvider(this).get(TipsViewModel::class.java)
+            ViewModelProvider(this)[TipsViewModel::class.java]
 
+<<<<<<< Updated upstream
         getActivity()?.setTitle(R.string.title_tips)
+=======
+        activity?.setTitle(R.string.title_tips)
+>>>>>>> Stashed changes
 
         _binding = FragmentTipsBinding.inflate(inflater, container, false)
         val root: View = binding.root

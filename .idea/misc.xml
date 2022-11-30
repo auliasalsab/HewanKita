@@ -11,11 +11,25 @@
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/drawable/ic_home.xml" value="0.151" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/drawable/ic_profile.xml" value="0.151" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/drawable/ic_tips.xml" value="0.151" />
+<<<<<<< Updated upstream
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_bottom.xml" value="0.25" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_care.xml" value="0.1" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_consultation.xml" value="0.25" />
+=======
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_all_schedule.xml" value="0.33" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_bottom.xml" value="0.25" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_care.xml" value="0.1" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_care_schedule.xml" value="0.25" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_cek_jadwal.xml" value="0.1" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_check_schedule.xml" value="0.33" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_consultation.xml" value="0.2" />
+>>>>>>> Stashed changes
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_doctor.xml" value="0.25" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_dokter_hewan.xml" value="0.18645833333333334" />
+<<<<<<< Updated upstream
+=======
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />
+>>>>>>> Stashed changes
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_grooming.xml" value="0.10185185185185185" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/activity_login.xml" value="0.33" />
@@ -30,13 +44,25 @@
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_care.xml" value="0.1" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_dashboard.xml" value="0.18645833333333334" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_doctor.xml" value="0.33" />
+<<<<<<< Updated upstream
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_menu.xml" value="0.18645833333333334" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_option_dialog.xml" value="0.1" />
+=======
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_menu.xml" value="0.22" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_option_dialog.xml" value="0.22" />
+>>>>>>> Stashed changes
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_outlet.xml" value="0.18645833333333334" />
-        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_profile.xml" value="0.18645833333333334" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/fragment_tips.xml" value="0.18645833333333334" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/item_row_outlet.xml" value="0.18645833333333334" />
+<<<<<<< Updated upstream
+=======
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/item_schedule.xml" value="0.33" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/item_schedule_all.xml" value="0.33" />
+        <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/layout/item_schedule_care.xml" value="0.33" />
+>>>>>>> Stashed changes
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18" />
         <entry key="..\:/MyData/Project/Android Project/Capstone/HewanKita/app/src/main/res/menu/option_menu.xml" value="0.1" />
         <entry key="..\:/MyData/Project/Android Project/HewanKita/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.124" />

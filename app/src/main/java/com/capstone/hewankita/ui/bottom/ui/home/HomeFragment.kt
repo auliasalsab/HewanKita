@@ -2,22 +2,18 @@ package com.capstone.hewankita.ui.bottom.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
-import android.view.*
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
-import com.capstone.hewankita.data.remote.response.LoginResult
 import com.capstone.hewankita.data.session.UserSession
 import com.capstone.hewankita.databinding.FragmentHomeBinding
 import com.capstone.hewankita.ui.care.CareActivity
 import com.capstone.hewankita.ui.consultation.ConsultationActivity
 import com.capstone.hewankita.ui.doctor.DoctorActivity
-import com.capstone.hewankita.ui.doctor.DoctorFragment
 import com.capstone.hewankita.ui.grooming.GroomingActivity
-import com.capstone.hewankita.ui.login.LoginActivity
 import com.capstone.hewankita.ui.vaccination.VaccinationActivity
-
 
 class HomeFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentHomeBinding? = null
@@ -67,11 +63,14 @@ class HomeFragment : Fragment(), View.OnClickListener {
         }
     }
 
+<<<<<<< Updated upstream
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
     }
 
+=======
+>>>>>>> Stashed changes
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
