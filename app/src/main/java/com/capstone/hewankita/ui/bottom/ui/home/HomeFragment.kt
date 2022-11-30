@@ -2,18 +2,24 @@ package com.capstone.hewankita.ui.bottom.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.provider.Settings
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
+import com.capstone.hewankita.data.remote.response.LoginResult
 import com.capstone.hewankita.data.session.UserSession
 import com.capstone.hewankita.databinding.FragmentHomeBinding
 import com.capstone.hewankita.ui.care.CareActivity
 import com.capstone.hewankita.ui.consultation.ConsultationActivity
 import com.capstone.hewankita.ui.doctor.DoctorActivity
+import com.capstone.hewankita.ui.doctor.DoctorFragment
 import com.capstone.hewankita.ui.grooming.GroomingActivity
+import com.capstone.hewankita.ui.login.LoginActivity
 import com.capstone.hewankita.ui.vaccination.VaccinationActivity
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+
 
 class HomeFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentHomeBinding? = null
@@ -61,6 +67,40 @@ class HomeFragment : Fragment(), View.OnClickListener {
             val intent = Intent(requireActivity(), VaccinationActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.option_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.localization -> {
+                startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+                true
+            }
+            R.id.logout -> {
+                logOut()
+                val intent = Intent(requireActivity(), LoginActivity::class.java)
+                startActivity(intent)
+                Toast.makeText(requireActivity(), resources.getString(R.string.logout_success), Toast.LENGTH_SHORT).show()
+                activity?.finish()
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun logOut(){
+        Firebase.auth.signOut()
     }
 
     override fun onDestroyView() {

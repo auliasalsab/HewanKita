@@ -20,7 +20,12 @@ import com.capstone.hewankita.data.local.database.DatabaseContract
 import com.capstone.hewankita.data.local.database.ScheduleHelper
 import com.capstone.hewankita.data.local.entity.ScheduleAll
 import com.capstone.hewankita.databinding.FragmentMenuBinding
+import com.capstone.hewankita.utils.Constants
 import com.capstone.hewankita.utils.OptionDialogFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 
 class GroomingFragment : Fragment(), View.OnClickListener {
@@ -31,6 +36,7 @@ class GroomingFragment : Fragment(), View.OnClickListener {
     private lateinit var tvOutlet: EditTextValidation
     private lateinit var tvBookingDate: EditTextValidation
     private lateinit var tvBookingTime: EditTextValidation
+    private lateinit var auth: FirebaseAuth
 
     private var mYear = 0
     private var mMonth = 0
@@ -61,6 +67,7 @@ class GroomingFragment : Fragment(), View.OnClickListener {
         tvOutlet = binding.tvOutlet
         tvBookingDate = binding.tvBookingDate
         tvBookingTime = binding.tvBookingTime
+        auth = FirebaseAuth.getInstance()
 
         setButton()
 
@@ -166,6 +173,8 @@ class GroomingFragment : Fragment(), View.OnClickListener {
             scheduleAll?.booking_date = bookingDate
             scheduleAll?.booking_time = bookingTime
 
+            addService(outlet, bookingDate, bookingTime)
+
             val intent = Intent()
             intent.putExtra(EXTRA_SCHEDULE, scheduleAll)
             intent.putExtra(EXTRA_SCHEDULE, position)
@@ -209,6 +218,23 @@ class GroomingFragment : Fragment(), View.OnClickListener {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun addService(outlet: String, bookingDate: String, bookingTime: String){
+        val user: FirebaseUser? = auth.currentUser
+        val userEmail: String? = user!!.email
+
+        val database = Firebase.database
+        val databaseReference = database.getReference(Constants.TABLE_DATA_SERVICE).child(Constants.CHILD_SERVICE_GROOMING_SERVICE)
+
+        val hashMap = mapOf<String, Any>(
+            Constants.CONST_SERVICE_OUTLET to outlet,
+            Constants.CONST_SERVICE_DATE to bookingDate,
+            Constants.CONST_SERVICE_TIME to bookingTime,
+            Constants.CONST_USER_EMAIL to userEmail.toString()
+        )
+
+        databaseReference.push().setValue(hashMap)
     }
 
     companion object {

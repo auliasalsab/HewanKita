@@ -14,6 +14,8 @@ import com.capstone.hewankita.data.remote.response.LoginResult
 import com.capstone.hewankita.data.session.UserSession
 import com.capstone.hewankita.databinding.FragmentTipsBinding
 import com.capstone.hewankita.ui.login.LoginActivity
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class TipsFragment : Fragment() {
     private var _binding: FragmentTipsBinding? = null
@@ -84,13 +86,7 @@ class TipsFragment : Fragment() {
                 true
             }
             R.id.logout -> {
-                pref.getUser(
-                    LoginResult(
-                        name = null,
-                        token = null,
-                        isLogin = false
-                    )
-                )
+                logOut()
                 val intent = Intent(requireActivity(), LoginActivity::class.java)
                 startActivity(intent)
                 Toast.makeText(requireActivity(), resources.getString(R.string.logout_success), Toast.LENGTH_SHORT).show()
@@ -104,6 +100,10 @@ class TipsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
+    }
+
+    private fun logOut(){
+        Firebase.auth.signOut()
     }
 
     override fun onDestroyView() {

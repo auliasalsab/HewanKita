@@ -1,8 +1,10 @@
 package com.capstone.hewankita.ui.bottom.ui.profile
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -15,11 +17,24 @@ import com.capstone.hewankita.ui.editProfile.EditProfileActivity
 import com.capstone.hewankita.ui.information.InformationActivity
 import com.capstone.hewankita.ui.myPet.MyPetActivity
 import com.capstone.hewankita.ui.login.LoginActivity
+import com.capstone.hewankita.utils.Constants
+import com.capstone.hewankita.utils.Users
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var pref: UserSession
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,11 +48,14 @@ class ProfileFragment : Fragment(), View.OnClickListener {
 
         pref = UserSession(requireContext())
 
+        auth = FirebaseAuth.getInstance()
+
         binding.column1.setOnClickListener(this)
         binding.column2.setOnClickListener(this)
         binding.column3.setOnClickListener(this)
         binding.column4.setOnClickListener(this)
         binding.column5.setOnClickListener(this)
+
         return root
     }
 
@@ -59,18 +77,15 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             startActivity(intent)
         }
         if(v == binding.column5) {
-            pref.getUser(
-                LoginResult(
-                    name = null,
-                    token = null,
-                    isLogin = false
-                )
-            )
+            logOut()
             val intent = Intent(requireActivity(), LoginActivity::class.java)
             startActivity(intent)
             Toast.makeText(requireActivity(), resources.getString(R.string.logout_success), Toast.LENGTH_SHORT).show()
             activity?.finish()
         }
+    }
+    private fun logOut(){
+        Firebase.auth.signOut()
     }
 
     @Deprecated("Deprecated in Java")
@@ -87,13 +102,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
                 true
             }
             R.id.logout -> {
-                pref.getUser(
-                    LoginResult(
-                        name = null,
-                        token = null,
-                        isLogin = false
-                    )
-                )
+                logOut()
                 val intent = Intent(requireActivity(), LoginActivity::class.java)
                 startActivity(intent)
                 Toast.makeText(requireActivity(), resources.getString(R.string.logout_success), Toast.LENGTH_SHORT).show()

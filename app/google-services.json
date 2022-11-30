@@ -1,10 +1,40 @@
 {
   "project_info": {
     "project_number": "654096082281",
+    "firebase_url": "https://hewankita-e9837-default-rtdb.firebaseio.com",
     "project_id": "hewankita-e9837",
     "storage_bucket": "hewankita-e9837.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654096082281:android:cc756206d43d00d038c9f8",
+        "android_client_info": {
+          "package_name": "com.capstone.hewankita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654096082281-6jhmhtftg7pqjneq7c6dres8764qnusk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPgCbIrasNNh3FwWoVs4b8SNM0qIuFJkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654096082281-6jhmhtftg7pqjneq7c6dres8764qnusk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:654096082281:android:96f708c5d9a8083338c9f8",

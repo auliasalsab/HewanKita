@@ -10,18 +10,20 @@ import com.capstone.hewankita.R
 import com.capstone.hewankita.data.session.UserSession
 import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.ui.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
+
+    private var auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
         supportActionBar?.hide()
 
-        val login = UserSession(this).isLogin()
         Handler(Looper.getMainLooper()).postDelayed({
-            if (login) {
+            if (auth.currentUser != null) {
                 val intent = Intent(this@SplashScreenActivity, BottomActivity::class.java)
                 startActivity(intent)
                 finish()

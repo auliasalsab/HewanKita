@@ -121,7 +121,8 @@
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:enabled="false"/>
 
         <TextView
             android:id="@+id/tvAddress"
@@ -152,45 +153,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/tvPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/password"
-            android:textSize="18sp"
-            android:textColor="@color/primary_color"
-            android:fontFamily="sans-serif-black"
-            android:layout_marginTop="15dp"
-            android:layout_below="@+id/etAddress"
-            android:layout_marginStart="25dp"/>
-
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/tvPassword"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="25dp"
-            android:autofillHints="username"
-            android:background="@drawable/border"
-            android:fontFamily="sans-serif-light"
-            android:textSize="16sp"
-            android:hint="@string/password"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="TextFields" />
-
         <Button
+            android:id="@+id/btn_save_profile"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/etPassword"
+            android:layout_below="@+id/etAddress"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
             android:background="@color/primary_color"
-            android:text="@string/save"
-            android:layout_marginTop="20dp"/>
-
+            android:text="@string/save" />
     </RelativeLayout>
-
 </ScrollView>

@@ -20,7 +20,12 @@ import com.capstone.hewankita.data.local.database.DatabaseContract
 import com.capstone.hewankita.data.local.database.ScheduleHelper
 import com.capstone.hewankita.data.local.entity.ScheduleCare
 import com.capstone.hewankita.databinding.FragmentCareBinding
+import com.capstone.hewankita.utils.Constants
 import com.capstone.hewankita.utils.OptionDialogFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 
 class CareFragment : Fragment(), View.OnClickListener {
@@ -32,6 +37,7 @@ class CareFragment : Fragment(), View.OnClickListener {
     private lateinit var tvCheckIn: EditTextValidation
     private lateinit var tvCheckOut: EditTextValidation
     private lateinit var tvTimeOfArrival: EditTextValidation
+    private lateinit var auth: FirebaseAuth
 
     private var mYear = 0
     private var mMonth = 0
@@ -64,6 +70,8 @@ class CareFragment : Fragment(), View.OnClickListener {
         tvCheckIn = binding.tvCheckIn
         tvCheckOut = binding.tvCheckOut
         tvTimeOfArrival = binding.tvTimeOfArrival
+
+        auth = FirebaseAuth.getInstance()
 
         setButton()
 
@@ -197,6 +205,8 @@ class CareFragment : Fragment(), View.OnClickListener {
             scheduleCare?.check_out = checkOut
             scheduleCare?.time_of_arrival = timeOfArrival
 
+            addService(outlet, checkIn, checkOut, timeOfArrival)
+
             val intent = Intent()
             intent.putExtra(EXTRA_SCHEDULE, scheduleCare)
             intent.putExtra(EXTRA_SCHEDULE, position)
@@ -235,6 +245,24 @@ class CareFragment : Fragment(), View.OnClickListener {
         override fun onOptionChosen(text: String?) {
             binding.tvOutlet.setText(text)
         }
+    }
+
+    private fun addService(outlet: String, checkIn: String, checkOut: String, timeOA: String){
+        val user: FirebaseUser? = auth.currentUser
+        val userEmail: String? = user!!.email
+
+        val database = Firebase.database
+        val databaseReference = database.getReference(Constants.TABLE_DATA_SERVICE).child(Constants.CHILD_SERVICE_CARE_SERVICE)
+
+        val hashMap = mapOf<String, Any>(
+            Constants.CONST_SERVICE_OUTLET to outlet,
+            Constants.CONST_SERVICE_CHECK_IN to checkIn,
+            Constants.CONST_SERVICE_CHECK_OUT to checkOut,
+            Constants.CONST_SERVICE_TIME_OA to timeOA,
+            Constants.CONST_USER_EMAIL to userEmail.toString()
+        )
+
+        databaseReference.push().setValue(hashMap)
     }
 
     override fun onDestroyView() {
