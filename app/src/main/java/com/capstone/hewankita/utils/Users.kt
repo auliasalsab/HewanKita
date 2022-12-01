@@ -1,8 +1,13 @@
 package com.capstone.hewankita.utils
 
-data class Users (
-    val userId : String? = null,
-    val username: String? = null,
-    val userImage: String? = null,
-    val userEmail: String? = null
-)
+class Users (
+    userId : String? = null,
+    username: String? = null,
+    userImage: String? = null,
+    userEmail: String? = null,
+    userAddress: String? = null,
+    userPhone: String? = null
+){
+
+}
+

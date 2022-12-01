@@ -6,15 +6,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import com.capstone.hewankita.R
+import com.capstone.hewankita.customview.EditTextEmail
 import com.capstone.hewankita.databinding.ActivityEditProfileBinding
 import com.capstone.hewankita.utils.Constants
+import com.capstone.hewankita.utils.Users
 import com.capstone.hewankita.utils.uriToFile
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.io.File
-import java.security.Key
 import java.util.Base64
 
 class EditProfileActivity : AppCompatActivity() {
@@ -37,13 +41,14 @@ class EditProfileActivity : AppCompatActivity() {
             }
 
             binding.btnSaveProfile.setOnClickListener{
-                val username = etEmail.text.toString().trim()
-                val email = etEmail.text.toString().trim()
+
+                val username = etName.text.toString().trim()
                 val phone = etNoHp.text.toString().trim()
                 val address = etAddress.text.toString().trim()
                 val img = imageViewProfile.toString().trim()
+                val image = Base64.getEncoder().encodeToString(img.encodeToByteArray())
 
-                saveProfile(username, email, phone, address, img)
+                saveProfile(username, phone, address, image)
             }
         }
     }
@@ -67,20 +72,24 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveProfile(username: String, email: String, phone: String, address: String, profImg: String){
-        val user: FirebaseUser? = auth.currentUser
-        val userEmail: String? = user!!.email
+    private fun saveProfile(username: String, phone: String, address: String, profImg: String){
+
+        val user : FirebaseUser? = auth.currentUser
+
+        val userID: String = user!!.uid
+        val userEmail : String? = user.email
 
         val database = Firebase.database
         val databaseReference = database.getReference(Constants.TABLE_DATA_USER)
 
-        val hashMap: HashMap<String, Any> = HashMap()
-        hashMap[Constants.CONST_USER_USERNAME] = username
-        hashMap[Constants.CONST_USER_EMAIL] = email
-        hashMap[Constants.CONST_USER_PHONE] = phone
-        hashMap[Constants.CONST_USER_ADDRESS] = address
-        hashMap[Constants.CONST_USER_IMG] = profImg
+        val hashMap = mapOf<String, Any>(
+        Constants.CONST_USER_USERNAME to username,
+        Constants.CONST_USER_PHONE to phone,
+        Constants.CONST_USER_ADDRESS to address,
+        Constants.CONST_USER_IMG to profImg,
+        Constants.CONST_USER_EMAIL to userEmail.toString()
+        )
 
-        databaseReference.push().setValue(hashMap)
+        databaseReference.child(userID).setValue(hashMap)
     }
 }

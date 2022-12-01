@@ -6,6 +6,7 @@ class Constants {
         //Table Data
         const val TABLE_DATA_USER = "User"
         const val TABLE_DATA_SERVICE = "Services"
+        const val TABLE_DATA_PET = "Pet"
 
         //Child Data Service
         const val CHILD_SERVICE_CARE_SERVICE = "Care"
@@ -26,12 +27,19 @@ class Constants {
         const val CHILD_USER_PET_SHOP = "PetShop"
 
         //Data User
-        const val CONST_USER_ID = "User ID"
         const val CONST_USER_USERNAME = "Username"
         const val CONST_USER_EMAIL = "Email"
         const val CONST_USER_TYPE = "Type"
         const val CONST_USER_PHONE = "Phone"
         const val CONST_USER_IMG = "Profile Image"
         const val CONST_USER_ADDRESS = "Address"
+
+        //Data Pet
+        const val CONST_PET_SPECIES = "Species"
+        const val CONST_PET_GENDER = "Gender"
+        const val CONST_PET_DATE_OF_BIRTH = "Date of Birth"
+        const val CONST_PET_WEIGHT = "Weight"
+        const val CONST_PET_FEATHER_COLOUR = "Feather Colour"
+        const val CONST_PET_OTHER = "Other"
     }
 }
