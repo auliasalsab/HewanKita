@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
@@ -55,6 +56,8 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         binding.column3.setOnClickListener(this)
         binding.column4.setOnClickListener(this)
         binding.column5.setOnClickListener(this)
+
+        getUserData()
 
         return root
     }
@@ -116,6 +119,25 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
+    }
+
+    private fun getUserData(){
+        val user: FirebaseUser? = auth.currentUser
+        val userID: String = user!!.uid
+        val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_USER)
+
+        databaseReference.child(userID).get().addOnSuccessListener{
+            if (it.exists()){
+                val usernameProfile = it.child(Constants.CONST_USER_USERNAME).value
+                val emailProfile = it.child(Constants.CONST_USER_EMAIL).value
+
+                binding.tvName.text = usernameProfile.toString()
+                binding.tvEmail.text = emailProfile.toString()
+            }
+            else{
+                Toast.makeText(requireActivity(), "Error", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onDestroyView() {

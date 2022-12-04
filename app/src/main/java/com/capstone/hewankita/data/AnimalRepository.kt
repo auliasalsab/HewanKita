@@ -8,10 +8,6 @@ import com.google.firebase.database.FirebaseDatabase
 
 class AnimalRepository(private val apiService: ApiService) {
 
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val databaseReference: DatabaseReference =
-        FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_USER)
-
     companion object {
         @Volatile
         private var instance: AnimalRepository? = null

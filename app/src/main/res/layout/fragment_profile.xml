@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imageViewProfile"
                 android:layout_centerHorizontal="true"
-                android:text="@string/petName"
+                tools:text="@tools:sample/lorem"
                 android:fontFamily="sans-serif-black"
                 android:textColor="@color/primary_color"
                 android:textSize="20sp"/>
@@ -52,7 +52,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/emailProfile"
+                tools:text="@tools:sample/lorem"
                 android:textSize="12sp"
                 android:textColor="@color/gray"/>
 

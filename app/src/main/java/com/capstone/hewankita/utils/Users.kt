@@ -1,12 +1,12 @@
 package com.capstone.hewankita.utils
 
-class Users (
-    userId : String? = null,
-    username: String? = null,
-    userImage: String? = null,
-    userEmail: String? = null,
-    userAddress: String? = null,
-    userPhone: String? = null
+data class Users (
+    var userId : String? = null,
+    var username: String? = null,
+    var userImage: String? = null,
+    var userEmail: String? = null,
+    var userAddress: String? = null,
+    var userPhone: String? = null
 ){
 
 }

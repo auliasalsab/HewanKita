@@ -16,6 +16,9 @@
         android:theme="@style/Theme.HewanKita"
         tools:targetApi="31">
         <activity
+            android:name=".ui.admin.Admin"
+            android:exported="false"/>
+        <activity
             android:name=".ui.detailTips.DetailTips"
             android:exported="false" />
         <activity
@@ -50,7 +53,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.bottom.BottomActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ui.splash.SplashScreenActivity"
             android:exported="true">

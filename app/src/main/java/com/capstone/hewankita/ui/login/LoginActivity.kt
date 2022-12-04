@@ -14,7 +14,11 @@ import com.capstone.hewankita.databinding.ActivityLoginBinding
 import com.capstone.hewankita.utils.ViewModelFactory
 import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.ui.register.RegisterActivity
+import com.capstone.hewankita.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
     private var _binding: ActivityLoginBinding? = null

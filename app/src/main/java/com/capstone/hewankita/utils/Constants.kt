@@ -41,5 +41,7 @@ class Constants {
         const val CONST_PET_WEIGHT = "Weight"
         const val CONST_PET_FEATHER_COLOUR = "Feather Colour"
         const val CONST_PET_OTHER = "Other"
+
+        const val CONST_KEY = "Key"
     }
 }

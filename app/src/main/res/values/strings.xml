@@ -94,6 +94,7 @@
     <string name="picture">Picture</string>
     <string name="register_as_pet_shop">Register as Pet-Shop</string>
     <string name="user">User</string>
+    <string name="profile_has_been_updated">Profile has been updated</string>
 
     <string-array name="deskripsi">
         <item>Cara Merawat Hewan Peliharaan dirumah</item>
@@ -133,4 +134,7 @@
         <item>@drawable/artikel9</item>
         <item>@drawable/artikel10</item>
     </integer-array>
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
