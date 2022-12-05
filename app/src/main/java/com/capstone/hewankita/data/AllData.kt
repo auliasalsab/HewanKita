@@ -20,6 +20,7 @@ data class AllData(
     //Data Tips
     var Judul: String? = null,
     var Deskripsi: String? = null,
-    var TipsImage: String? = null
+    var TipsImage: String? = null,
+    var TipsUrl: String? = null
 )
 
