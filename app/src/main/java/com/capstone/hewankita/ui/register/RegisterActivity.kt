@@ -6,11 +6,9 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import android.widget.Toast
-import androidx.activity.viewModels
 import com.capstone.hewankita.R
 import com.capstone.hewankita.databinding.ActivityRegisterBinding
 import com.capstone.hewankita.ui.bottom.BottomActivity
-import com.capstone.hewankita.utils.ViewModelFactory
 import com.capstone.hewankita.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -24,10 +22,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
 
-    private var factory: ViewModelFactory = ViewModelFactory.getInstance(this)
-    private val viewModel: RegisterViewModel by viewModels {
-        factory
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

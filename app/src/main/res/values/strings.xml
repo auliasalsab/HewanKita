@@ -134,7 +134,4 @@
         <item>@drawable/artikel9</item>
         <item>@drawable/artikel10</item>
     </integer-array>
-    <string name="title_activity_admin">AdminActivity</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
 </resources>

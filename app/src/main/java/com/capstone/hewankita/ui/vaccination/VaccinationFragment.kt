@@ -16,9 +16,6 @@ import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
 import com.capstone.hewankita.customview.ButtonValidation
 import com.capstone.hewankita.customview.EditTextValidation
-import com.capstone.hewankita.data.local.database.DatabaseContract
-import com.capstone.hewankita.data.local.database.ScheduleHelper
-import com.capstone.hewankita.data.local.entity.ScheduleAll
 import com.capstone.hewankita.databinding.FragmentMenuBinding
 import com.capstone.hewankita.utils.Constants
 import com.capstone.hewankita.utils.OptionDialogFragment
@@ -43,10 +40,6 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
     private var mDay = 0
     private var mHour = 0
     private var mMinute = 0
-
-    private var scheduleAll: ScheduleAll? = null
-    private var position: Int = 0
-    private lateinit var scheduleHelper: ScheduleHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -75,9 +68,11 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
         tvOutlet.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 setButton()
             }
+
             override fun afterTextChanged(s: Editable) {
             }
         })
@@ -85,9 +80,11 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
         tvBookingDate.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 setButton()
             }
+
             override fun afterTextChanged(s: Editable) {
             }
         })
@@ -95,15 +92,14 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
         tvBookingTime.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 setButton()
             }
+
             override fun afterTextChanged(s: Editable) {
             }
         })
-
-        scheduleHelper = ScheduleHelper.getInstance(requireContext())
-        scheduleHelper.open()
 
         return root
     }
@@ -118,10 +114,13 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        if(v == binding.tvOutlet) {
+        if (v == binding.tvOutlet) {
             val mOptionDialogFragment = OptionDialogFragment()
             val mFragmentManager = childFragmentManager
-            mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment::class.java.simpleName)
+            mOptionDialogFragment.show(
+                mFragmentManager,
+                OptionDialogFragment::class.java.simpleName
+            )
         }
         if (v === binding.tvBookingDate) {
             val c = Calendar.getInstance()
@@ -129,9 +128,10 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
             mMonth = c[Calendar.MONTH]
             mDay = c[Calendar.DAY_OF_MONTH]
 
-            val datePickerDialog = DatePickerDialog(requireActivity(), { _, year, monthOfYear, dayOfMonth ->
-                binding.tvBookingDate.setText(StringBuilder("$dayOfMonth-${monthOfYear + 1}-$year"))
-            }, mYear, mMonth, mDay)
+            val datePickerDialog =
+                DatePickerDialog(requireActivity(), { _, year, monthOfYear, dayOfMonth ->
+                    binding.tvBookingDate.setText(StringBuilder("$dayOfMonth-${monthOfYear + 1}-$year"))
+                }, mYear, mMonth, mDay)
 
             datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
             datePickerDialog.show()
@@ -145,19 +145,22 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
             val timePicker = TimePickerDialog(requireActivity(), { _, hourOfDay, minute ->
                 c.set(Calendar.HOUR_OF_DAY, hourOfDay)
                 c.set(Calendar.MINUTE, minute)
-                if(c.get(Calendar.AM_PM) == Calendar.AM) {
+                if (c.get(Calendar.AM_PM) == Calendar.AM) {
                     amPm = "AM"
-                } else if(c.get(Calendar.AM_PM) == Calendar.PM) {
+                } else if (c.get(Calendar.AM_PM) == Calendar.PM) {
                     amPm = "PM"
                 }
-                val hrs = if(c.get(Calendar.HOUR) == 0) "12" else c.get(Calendar.HOUR).toString()
-                val showHrs = if(c.get(Calendar.HOUR) <= 9 && c.get(Calendar.HOUR) != 0) "0$hrs" else hrs
-                val showMinutes = if(c.get(Calendar.MINUTE) <= 9) "0${c.get(Calendar.MINUTE)}" else "${c.get(Calendar.MINUTE)}"
+                val hrs = if (c.get(Calendar.HOUR) == 0) "12" else c.get(Calendar.HOUR).toString()
+                val showHrs =
+                    if (c.get(Calendar.HOUR) <= 9 && c.get(Calendar.HOUR) != 0) "0$hrs" else hrs
+                val showMinutes =
+                    if (c.get(Calendar.MINUTE) <= 9) "0${c.get(Calendar.MINUTE)}" else "${
+                        c.get(Calendar.MINUTE)
+                    }"
                 val time = "$showHrs:$showMinutes $amPm"
-                if(!compareTwoTimes(getCurrentTime()!!,time)) {
+                if (!compareTwoTimes(getCurrentTime()!!, time)) {
                     binding.tvBookingTime.setText(getString(R.string.cannot_use_past_time))
-                }
-                else {
+                } else {
                     binding.tvBookingTime.setText(time)
                 }
 
@@ -167,34 +170,27 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
         }
         if (v == binding.btnNext) {
             val outlet = binding.tvOutlet.text.toString().trim()
-            val bookingDate = "${getString(R.string.bookingDate)}:  ${binding.tvBookingDate.text.toString().trim()}"
-            val bookingTime = "${getString(R.string.bookingTime)}:  ${binding.tvBookingTime.text.toString().trim()}"
-
-            scheduleAll?.outlet = outlet
-            scheduleAll?.booking_date = bookingDate
-            scheduleAll?.booking_time = bookingTime
+            val bookingDate = "${getString(R.string.bookingDate)}:  ${
+                binding.tvBookingDate.text.toString().trim()
+            }"
+            val bookingTime = "${getString(R.string.bookingTime)}:  ${
+                binding.tvBookingTime.text.toString().trim()
+            }"
 
             addService(outlet, bookingDate, bookingTime)
 
-            val intent = Intent()
-            intent.putExtra(EXTRA_SCHEDULE, scheduleAll)
-            intent.putExtra(EXTRA_SCHEDULE, position)
-
-            val values = ContentValues()
-            values.put(DatabaseContract.VaccinationColumns.OUTLET, outlet)
-            values.put(DatabaseContract.VaccinationColumns.BOOKING_DATE, bookingDate)
-            values.put(DatabaseContract.VaccinationColumns.BOOKING_TIME, bookingTime)
-
-            val result = scheduleHelper.insertTableVaccination(values)
-
-            if (result > 0) {
-                scheduleAll?.id = result.toInt()
-                Toast.makeText(requireActivity(), resources.getString(R.string.booking_success), Toast.LENGTH_SHORT).show()
-                activity?.setResult(RESULT_ADD, intent)
-                activity?.finish()
-            } else {
-                Toast.makeText(requireActivity(), getString(R.string.booking_failed), Toast.LENGTH_SHORT).show()
-            }
+            Toast.makeText(
+                requireActivity(),
+                resources.getString(R.string.booking_success),
+                Toast.LENGTH_SHORT
+            ).show()
+            activity?.finish()
+        } else {
+            Toast.makeText(
+                requireActivity(),
+                getString(R.string.booking_failed),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -203,26 +199,28 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
         return simpleDateFormat.format(Calendar.getInstance().time)
     }
 
-    private fun compareTwoTimes(fromTime: String, currentTime : String): Boolean {
+    private fun compareTwoTimes(fromTime: String, currentTime: String): Boolean {
         val sdf = SimpleDateFormat("hh:mm a")
         val time1 = sdf.parse(fromTime)
         val time2 = sdf.parse(currentTime)
         return !time2!!.before(time1)
     }
 
-    internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener = object : OptionDialogFragment.OnOptionDialogListener {
-        override fun onOptionChosen(text: String?) {
-            binding.tvOutlet.setText(text)
+    internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener =
+        object : OptionDialogFragment.OnOptionDialogListener {
+            override fun onOptionChosen(text: String?) {
+                binding.tvOutlet.setText(text)
+            }
         }
-    }
 
-    private fun addService(outlet: String, bookingDate: String, bookingTime: String){
+    private fun addService(outlet: String, bookingDate: String, bookingTime: String) {
         val user: FirebaseUser? = auth.currentUser
         val userEmail: String? = user!!.email
 
         val database = Firebase.database
-        val databaseReference = database.getReference(Constants.TABLE_DATA_SERVICE).child(Constants.CHILD_SERVICE_VACCINATION_SERVICE)
-        val key : String = databaseReference.push().key.toString()
+        val databaseReference = database.getReference(Constants.TABLE_DATA_SERVICE)
+            .child(Constants.CHILD_SERVICE_VACCINATION_SERVICE)
+        val key: String = databaseReference.push().key.toString()
 
         val hashMap = mapOf<String, Any>(
             Constants.CONST_SERVICE_OUTLET to outlet,
@@ -238,10 +236,5 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        const val EXTRA_SCHEDULE = "extra_schedule"
-        const val RESULT_ADD = 101
     }
 }

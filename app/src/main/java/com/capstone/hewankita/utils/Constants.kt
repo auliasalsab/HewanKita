@@ -7,6 +7,7 @@ class Constants {
         const val TABLE_DATA_USER = "User"
         const val TABLE_DATA_SERVICE = "Services"
         const val TABLE_DATA_PET = "Pet"
+        const val TABLE_DATA_TIPS = "Tips"
 
         //Child Data Service
         const val CHILD_SERVICE_CARE_SERVICE = "Care"
@@ -18,9 +19,9 @@ class Constants {
         const val CONST_SERVICE_OUTLET = "Outlet"
         const val CONST_SERVICE_DATE = "Date"
         const val CONST_SERVICE_TIME = "Time"
-        const val CONST_SERVICE_CHECK_IN = "Check In"
-        const val CONST_SERVICE_CHECK_OUT = "Check Out"
-        const val CONST_SERVICE_TIME_OA = "Time Of Arrival"
+        const val CONST_SERVICE_CHECK_IN = "CheckIn"
+        const val CONST_SERVICE_CHECK_OUT = "CheckOut"
+        const val CONST_SERVICE_TIME_OA = "TimeOfArrival"
 
         //Child Data User
         const val CHILD_USER_CUSTOMER = "Customer"

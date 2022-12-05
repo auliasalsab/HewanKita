@@ -7,8 +7,6 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
-import com.capstone.hewankita.data.remote.response.LoginResult
-import com.capstone.hewankita.data.session.UserSession
 import com.capstone.hewankita.databinding.FragmentHomeBinding
 import com.capstone.hewankita.ui.care.CareActivity
 import com.capstone.hewankita.ui.consultation.ConsultationActivity
@@ -24,7 +22,6 @@ import com.google.firebase.ktx.Firebase
 class HomeFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var pref: UserSession
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,8 +32,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val root: View = binding.root
 
         activity?.setTitle(R.string.title_home)
-
-        pref = UserSession(requireContext())
 
         binding.ivDoctor.setOnClickListener(this)
         binding.ivConsultation.setOnClickListener(this)

@@ -1,41 +1,30 @@
 package com.capstone.hewankita.adapter
 
-import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.capstone.hewankita.R
-import com.capstone.hewankita.data.local.entity.ScheduleCare
+import com.capstone.hewankita.data.AllData
 import com.capstone.hewankita.databinding.ItemScheduleCareBinding
 
-class ScheduleCareAdapter : RecyclerView.Adapter<ScheduleCareAdapter.ViewHolder>() {
-    var listScheduleCare = ArrayList<ScheduleCare>()
-        set(list) {
-            if (list.size > 0) {
-                this.listScheduleCare.clear()
-            }
-            this.listScheduleCare.addAll(list)
-        }
+class ScheduleCareAdapter(private val listScheduleCare: ArrayList<AllData>) : RecyclerView.Adapter<ScheduleCareAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_schedule_care, parent, false)
-        return ViewHolder(view)
+        val binding = ItemScheduleCareBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(listScheduleCare[position])
     }
 
-    override fun getItemCount(): Int = this.listScheduleCare.size
+    override fun getItemCount(): Int = listScheduleCare.size
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemScheduleCareBinding.bind(itemView)
-        fun bind(scheduleCare: ScheduleCare) {
-            binding.tvItemOutlet.text = scheduleCare.outlet
-            binding.tvItemCheckIn.text = scheduleCare.check_in
-            binding.tvItemCheckOut.text = scheduleCare.check_out
-            binding.tvItemTimeOfArrival.text = scheduleCare.time_of_arrival
+    inner class ViewHolder(private val binding: ItemScheduleCareBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(scheduleData: AllData) {
+            binding.tvItemOutlet.text = scheduleData.Outlet
+            binding.tvItemCheckIn.text = scheduleData.CheckIn
+            binding.tvItemCheckOut.text = scheduleData.CheckOut
+            binding.tvItemTimeOfArrival.text = scheduleData.TimeOfArrival
         }
     }
 }

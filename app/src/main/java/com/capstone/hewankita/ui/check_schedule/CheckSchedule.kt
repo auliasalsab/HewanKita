@@ -6,6 +6,10 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.hewankita.R
 import com.capstone.hewankita.databinding.ActivityCheckScheduleBinding
+import com.capstone.hewankita.ui.check_schedule.care.CareScheduleActivity
+import com.capstone.hewankita.ui.check_schedule.doctor.DoctorScheduleActivity
+import com.capstone.hewankita.ui.check_schedule.grooming.GroomingScheduleActivity
+import com.capstone.hewankita.ui.check_schedule.vaccination.VaccinationScheduleActivity
 
 class CheckSchedule : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityCheckScheduleBinding

@@ -7,7 +7,6 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.hewankita.R
-import com.capstone.hewankita.data.session.UserSession
 import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth

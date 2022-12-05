@@ -1,16 +1,13 @@
 package com.capstone.hewankita.ui.bottom.ui.profile
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.capstone.hewankita.R
-import com.capstone.hewankita.data.remote.response.LoginResult
-import com.capstone.hewankita.data.session.UserSession
 import com.capstone.hewankita.databinding.FragmentProfileBinding
 import com.capstone.hewankita.ui.check_schedule.CheckSchedule
 import com.capstone.hewankita.ui.editProfile.EditProfileActivity
@@ -18,22 +15,16 @@ import com.capstone.hewankita.ui.information.InformationActivity
 import com.capstone.hewankita.ui.myPet.MyPetActivity
 import com.capstone.hewankita.ui.login.LoginActivity
 import com.capstone.hewankita.utils.Constants
-import com.capstone.hewankita.utils.Users
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-    private lateinit var pref: UserSession
 
     private lateinit var auth: FirebaseAuth
 
@@ -46,8 +37,6 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         val root: View = binding.root
 
         activity?.setTitle(R.string.title_profile)
-
-        pref = UserSession(requireContext())
 
         auth = FirebaseAuth.getInstance()
 
@@ -130,9 +119,13 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             if (it.exists()){
                 val usernameProfile = it.child(Constants.CONST_USER_USERNAME).value
                 val emailProfile = it.child(Constants.CONST_USER_EMAIL).value
+                val photoProfile = it.child(Constants.CONST_USER_IMG).value
 
                 binding.tvName.text = usernameProfile.toString()
                 binding.tvEmail.text = emailProfile.toString()
+                Glide.with(this)
+                    .load(photoProfile)
+                    .into(binding.imageViewProfile)
             }
             else{
                 Toast.makeText(requireActivity(), "Error", Toast.LENGTH_SHORT).show()

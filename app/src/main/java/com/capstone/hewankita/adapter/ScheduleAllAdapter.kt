@@ -1,39 +1,29 @@
 package com.capstone.hewankita.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.capstone.hewankita.R
-import com.capstone.hewankita.data.local.entity.ScheduleAll
+import com.capstone.hewankita.data.AllData
 import com.capstone.hewankita.databinding.ItemScheduleAllBinding
 
-class ScheduleAllAdapter : RecyclerView.Adapter<ScheduleAllAdapter.ViewHolder>() {
-    var listScheduleAll = ArrayList<ScheduleAll>()
-        set(list) {
-            if (list.size > 0) {
-                this.listScheduleAll.clear()
-            }
-            this.listScheduleAll.addAll(list)
-        }
+class ScheduleAllAdapter(private val listScheduleAll: ArrayList<AllData>) : RecyclerView.Adapter<ScheduleAllAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_schedule_all, parent, false)
-        return ViewHolder(view)
+        val binding = ItemScheduleAllBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(listScheduleAll[position])
     }
 
-    override fun getItemCount(): Int = this.listScheduleAll.size
+    override fun getItemCount(): Int = listScheduleAll.size
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemScheduleAllBinding.bind(itemView)
-        fun bind(scheduleAll: ScheduleAll) {
-            binding.tvItemOutlet.text = scheduleAll.outlet
-            binding.tvItemDate.text = scheduleAll.booking_date
-            binding.tvItemTime.text = scheduleAll.booking_time
+    inner class ViewHolder(private val binding: ItemScheduleAllBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(scheduleData: AllData) {
+            binding.tvItemOutlet.text = scheduleData.Outlet
+            binding.tvItemDate.text = scheduleData.Date
+            binding.tvItemTime.text = scheduleData.Time
         }
     }
 }

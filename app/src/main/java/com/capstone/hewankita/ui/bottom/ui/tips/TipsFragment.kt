@@ -10,18 +10,21 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.hewankita.R
 import com.capstone.hewankita.adapter.ListTipsAdapter
-import com.capstone.hewankita.data.remote.response.LoginResult
-import com.capstone.hewankita.data.session.UserSession
+import com.capstone.hewankita.adapter.ScheduleAllAdapter
+import com.capstone.hewankita.data.AllData
 import com.capstone.hewankita.databinding.FragmentTipsBinding
 import com.capstone.hewankita.ui.login.LoginActivity
+import com.capstone.hewankita.utils.Constants
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 
 class TipsFragment : Fragment() {
     private var _binding: FragmentTipsBinding? = null
     private val binding get() = _binding!!
-    private val list = ArrayList<Tips>()
-    private lateinit var pref: UserSession
+    private val tipsList = ArrayList<AllData>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,55 +33,22 @@ class TipsFragment : Fragment() {
 
     ): View {
         ViewModelProvider(this)[TipsViewModel::class.java]
-
         activity?.setTitle(R.string.title_tips)
-
         _binding = FragmentTipsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        list.addAll(listTips)
-        dataTips()
-
-        return root
-    }
-
-    private val listTips : ArrayList<Tips>
-    get() {
-        val judul = resources.getStringArray(R.array.judul)
-        val deskripsi = resources.getStringArray(R.array.deskripsi)
-        val photo = resources.obtainTypedArray(R.array.photo)
-        val listTips = ArrayList<Tips>()
-        for (i in judul.indices) {
-            val tips = Tips(judul[i],deskripsi[i], photo.getResourceId(i,-1))
-            listTips.add(tips)
+        binding.apply {
+            rvTips.layoutManager = LinearLayoutManager(requireActivity())
+            rvTips.setHasFixedSize(true)
+            getDoctorService()
         }
-        return listTips
-    }
-    private fun dataTips() {
-        binding.rvTips.layoutManager = LinearLayoutManager(requireActivity())
-
-        val adapter = ListTipsAdapter(list)
-
-        /*adapter.setOnItemClickCallback(object : ListTipsAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Tips) {
-                Intent(requireContext(), UserDetail::class.java).also {
-                    it.putExtra(UserDetail.EXTRA_DETAIL, data.judul)
-                    startActivity(it)
-                }
-            }
-        })*/
-        binding.rvTips.setHasFixedSize(true)
-        binding.rvTips.adapter = adapter
-
+        return binding.root
     }
 
-    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.option_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.localization -> {
@@ -109,5 +79,34 @@ class TipsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun getDoctorService(){
+
+        val databaseReference : DatabaseReference = FirebaseDatabase.getInstance().reference
+        databaseReference.child(Constants.TABLE_DATA_TIPS).addValueEventListener(object :
+            ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {
+                showSnackbarMessage(getString(R.string.no_data))
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                if (snapshot.exists()){
+                    for (doctorServiceSnapshot in snapshot.children){
+                        val tips = doctorServiceSnapshot.getValue(AllData::class.java)
+                        tipsList.add(tips!!)
+                    }
+                    binding.rvTips.adapter = ListTipsAdapter(tipsList)
+                }
+                else{
+                    showSnackbarMessage(getString(R.string.no_data))
+                }
+            }
+        })
+    }
+
+    private fun showSnackbarMessage(message: String) {
+        Snackbar.make(binding.rvTips, message, Snackbar.LENGTH_SHORT).show()
     }
 }
