@@ -118,7 +118,6 @@ class EditProfileActivity : AppCompatActivity() {
         databaseReference.child(userID).get().addOnSuccessListener {
             if (it.exists()){
                 val imageProfile = it.child(Constants.CONST_USER_IMG).value
-
                 Glide.with(this)
                     .load(imageProfile)
                     .into(binding.imageViewProfile)

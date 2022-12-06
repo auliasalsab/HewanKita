@@ -16,11 +16,26 @@
         android:theme="@style/Theme.HewanKita"
         tools:targetApi="31">
         <activity
+            android:name=".ui.care.CareList"
+            android:exported="false" />
+        <activity
+            android:name=".ui.vaccination.VaccinationList"
+            android:exported="false" />
+        <activity
+            android:name=".ui.grooming.GroomingList"
+            android:exported="false" />
+        <activity
+            android:name=".ui.consultation.ListConsultant"
+            android:exported="false" />
+        <activity
+            android:name=".ui.doctor.DoctorList"
+            android:exported="false" />
+        <activity
             android:name=".ui.check_schedule.grooming.GroomingScheduleActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ui.check_schedule.doctor.DoctorScheduleActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ui.admin.Admin"
             android:exported="false" />

@@ -68,7 +68,7 @@
     <string name="pet_age">9 bulan</string>
     <string name="spesies">Spesies</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
-    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="age">Tanggal Lahir</string>
     <string name="berat">Berat</string>
     <string name="warna_bulu">Warna Bulu</string>
     <string name="ciri_lainnya">Ciri Lainnya</string>

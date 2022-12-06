@@ -16,11 +16,16 @@ import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
 import com.capstone.hewankita.customview.ButtonValidation
 import com.capstone.hewankita.customview.EditTextValidation
+import com.capstone.hewankita.data.AllData
 import com.capstone.hewankita.databinding.FragmentCareBinding
+import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.utils.Constants
-import com.capstone.hewankita.utils.OptionDialogFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
@@ -30,7 +35,6 @@ class CareFragment : Fragment(), View.OnClickListener {
     private val binding get() = _binding!!
 
     private lateinit var btnNext: ButtonValidation
-    private lateinit var tvOutlet: EditTextValidation
     private lateinit var tvCheckIn: EditTextValidation
     private lateinit var tvCheckOut: EditTextValidation
     private lateinit var tvTimeOfArrival: EditTextValidation
@@ -59,7 +63,6 @@ class CareFragment : Fragment(), View.OnClickListener {
         binding.btnNext.setOnClickListener(this)
 
         btnNext = binding.btnNext
-        tvOutlet = binding.tvOutlet
         tvCheckIn = binding.tvCheckIn
         tvCheckOut = binding.tvCheckOut
         tvTimeOfArrival = binding.tvTimeOfArrival
@@ -67,18 +70,6 @@ class CareFragment : Fragment(), View.OnClickListener {
         auth = FirebaseAuth.getInstance()
 
         setButton()
-
-        tvOutlet.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                setButton()
-            }
-
-            override fun afterTextChanged(s: Editable) {
-            }
-        })
 
         tvCheckIn.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -116,29 +107,22 @@ class CareFragment : Fragment(), View.OnClickListener {
             }
         })
 
+        getDataOutlet()
+
         return root
     }
 
     private fun setButton() {
-        val tvOutlet = tvOutlet.text
         val tvCheckIn = tvCheckIn.text
         val tvCheckOut = tvCheckOut.text
         val tvTimeOfArrival = tvTimeOfArrival.text
-        btnNext.isEnabled = tvOutlet != null && tvOutlet.toString().isNotEmpty() &&
+        btnNext.isEnabled =
                 tvCheckIn != null && tvCheckIn.toString().isNotEmpty() &&
                 tvCheckOut != null && tvCheckOut.toString().isNotEmpty() &&
                 tvTimeOfArrival != null && tvTimeOfArrival.toString().isNotEmpty()
     }
 
     override fun onClick(v: View?) {
-        if (v == binding.tvOutlet) {
-            val mOptionDialogFragment = OptionDialogFragment()
-            val mFragmentManager = childFragmentManager
-            mOptionDialogFragment.show(
-                mFragmentManager,
-                OptionDialogFragment::class.java.simpleName
-            )
-        }
         if (v === binding.tvCheckIn) {
             val c = Calendar.getInstance()
             mYear = c[Calendar.YEAR]
@@ -201,6 +185,8 @@ class CareFragment : Fragment(), View.OnClickListener {
             timePicker.show()
         }
         if (v == binding.btnNext) {
+            val outletId = binding.tvOutletId.text.toString().trim()
+            val outletEmail = binding.tvOutletEmail.text.toString().trim()
             val outlet = binding.tvOutlet.text.toString().trim()
             val checkIn =
                 "${getString(R.string.checkIn)}:  ${binding.tvCheckIn.text.toString().trim()}"
@@ -209,13 +195,15 @@ class CareFragment : Fragment(), View.OnClickListener {
             val timeOfArrival = "${getString(R.string.timeOfArrival)}:  ${
                 binding.tvTimeOfArrival.text.toString().trim()
             }"
-            addService(outlet, checkIn, checkOut, timeOfArrival)
+            addService(outlet, checkIn, checkOut, timeOfArrival, outletId, outletEmail)
 
             Toast.makeText(
                 requireActivity(),
                 resources.getString(R.string.booking_success),
                 Toast.LENGTH_SHORT
             ).show()
+            val intent = Intent(requireActivity(), BottomActivity::class.java)
+            startActivity(intent)
             activity?.finish()
         } else {
             Toast.makeText(
@@ -238,34 +226,53 @@ class CareFragment : Fragment(), View.OnClickListener {
         return !time2!!.before(time1)
     }
 
-    internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener =
-        object : OptionDialogFragment.OnOptionDialogListener {
-            override fun onOptionChosen(text: String?) {
-                binding.tvOutlet.setText(text)
-            }
-        }
-
-    private fun addService(outlet: String, checkIn: String, checkOut: String, timeOA: String) {
+    private fun addService(outlet: String, checkIn: String, checkOut: String, timeOA: String, outletEmail: String, outletId: String) {
         val user: FirebaseUser? = auth.currentUser
         val userEmail: String? = user!!.email
 
         val database = Firebase.database
         val databaseReference = database.getReference(Constants.TABLE_DATA_SERVICE)
             .child(Constants.CHILD_SERVICE_CARE_SERVICE)
+        val key: String = databaseReference.push().key.toString()
 
         val hashMap = mapOf<String, Any>(
             Constants.CONST_SERVICE_OUTLET to outlet,
             Constants.CONST_SERVICE_CHECK_IN to checkIn,
             Constants.CONST_SERVICE_CHECK_OUT to checkOut,
             Constants.CONST_SERVICE_TIME_OA to timeOA,
-            Constants.CONST_USER_EMAIL to userEmail.toString()
+            Constants.CONST_USER_EMAIL to userEmail.toString(),
+            Constants.CONST_KEY to key,
+            Constants.CONST_SERVICE_OUTLET_ID to outletId,
+            Constants.CONST_SERVICE_OUTLET_EMAIL to outletEmail
         )
 
         databaseReference.push().setValue(hashMap)
     }
 
+    private fun getDataOutlet(){
+        val outletID = requireActivity().intent.getStringExtra(OUTLET_ID)
+
+        val dbRef = FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_USER).child(outletID!!)
+        dbRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val user = snapshot.getValue(AllData::class.java)
+                binding.tvOutlet.text = user!!.Username
+                binding.tvOutletId.text = user.Key
+                binding.tvOutletEmail.text = user.Email
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object{
+        const val OUTLET_ID = "Id"
     }
 }

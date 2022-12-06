@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/tvTitleOutlet"
@@ -16,7 +16,28 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <com.capstone.hewankita.customview.EditTextValidation
+    <TextView
+        android:id="@+id/tvOutletEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/outlet"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnNext"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvOutletId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/outlet"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOutletEmail"
+        android:visibility="gone"/>
+    <TextView
         android:id="@+id/tvOutlet"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -26,6 +47,7 @@
         android:padding="14dp"
         android:background="@drawable/border"
         app:layout_constraintStart_toStartOf="parent"
+        tools:text="Outlet"
         app:layout_constraintTop_toBottomOf="@id/tvTitleOutlet" />
 
     <TextView

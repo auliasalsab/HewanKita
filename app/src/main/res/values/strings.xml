@@ -49,7 +49,7 @@
     <string name="booking_success">Booking Success</string>
     <string name="imageViewProfile">Image Profile</string>
     <string name="emailProfile">anabulmypet@gmail.com</string>
-    <string name="petName">Anabul</string>
+    <string name="petName">Pet Name</string>
     <string name="imagepets">Image Pets</string>
     <string name="my_pet">My Pet</string>
     <string name="ic_arrow">ic_arrow</string>
@@ -67,7 +67,7 @@
     <string name="pet_age">9 month</string>
     <string name="spesies">Species</string>
     <string name="jenis_kelamin">Gender</string>
-    <string name="tanggal_lahir">Date of birth</string>
+    <string name="age">Age</string>
     <string name="berat">Weight</string>
     <string name="warna_bulu">Feather Color</string>
     <string name="ciri_lainnya">Other Features</string>

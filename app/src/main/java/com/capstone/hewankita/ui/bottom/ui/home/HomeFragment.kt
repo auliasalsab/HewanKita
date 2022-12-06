@@ -9,12 +9,17 @@ import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
 import com.capstone.hewankita.databinding.FragmentHomeBinding
 import com.capstone.hewankita.ui.care.CareActivity
+import com.capstone.hewankita.ui.care.CareList
 import com.capstone.hewankita.ui.consultation.ConsultationActivity
+import com.capstone.hewankita.ui.consultation.ListConsultant
 import com.capstone.hewankita.ui.doctor.DoctorActivity
 import com.capstone.hewankita.ui.doctor.DoctorFragment
+import com.capstone.hewankita.ui.doctor.DoctorList
 import com.capstone.hewankita.ui.grooming.GroomingActivity
+import com.capstone.hewankita.ui.grooming.GroomingList
 import com.capstone.hewankita.ui.login.LoginActivity
 import com.capstone.hewankita.ui.vaccination.VaccinationActivity
+import com.capstone.hewankita.ui.vaccination.VaccinationList
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -43,23 +48,23 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View) {
         if(v == binding.ivDoctor) {
-            val intent = Intent(requireActivity(), DoctorActivity::class.java)
+            val intent = Intent(requireActivity(), DoctorList::class.java)
             startActivity(intent)
         }
         if(v == binding.ivConsultation) {
-            val intent = Intent(requireActivity(), ConsultationActivity::class.java)
+            val intent = Intent(requireActivity(), ListConsultant::class.java)
             startActivity(intent)
         }
         if(v == binding.ivGrooming) {
-            val intent = Intent(requireActivity(), GroomingActivity::class.java)
+            val intent = Intent(requireActivity(), GroomingList::class.java)
             startActivity(intent)
         }
         if(v == binding.ivCare) {
-            val intent = Intent(requireActivity(), CareActivity::class.java)
+            val intent = Intent(requireActivity(), CareList::class.java)
             startActivity(intent)
         }
         if(v == binding.ivVaccination) {
-            val intent = Intent(requireActivity(), VaccinationActivity::class.java)
+            val intent = Intent(requireActivity(), VaccinationList::class.java)
             startActivity(intent)
         }
     }

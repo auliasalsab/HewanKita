@@ -8,6 +8,8 @@ data class AllData(
     var Email: String? = null,
     var Address: String? = null,
     var Phone: String? = null,
+    var ProfileImage: String? = null,
+    var Key: String? = null,
 
     //Data Service
     var Outlet: String? = null,

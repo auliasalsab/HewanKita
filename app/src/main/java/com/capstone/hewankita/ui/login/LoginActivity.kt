@@ -13,8 +13,7 @@ import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.ui.register.RegisterActivity
 import com.capstone.hewankita.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class LoginActivity : AppCompatActivity() {
     private var _binding: ActivityLoginBinding? = null
@@ -56,8 +55,6 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) {
                 if (it.isSuccessful) {
-                    val intent = Intent(this, BottomActivity::class.java)
-                    startActivity(intent)
                 } else {
                     Toast.makeText(
                         this@LoginActivity,

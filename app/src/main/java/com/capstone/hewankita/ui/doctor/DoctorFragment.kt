@@ -16,11 +16,16 @@ import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
 import com.capstone.hewankita.customview.ButtonValidation
 import com.capstone.hewankita.customview.EditTextValidation
+import com.capstone.hewankita.data.AllData
 import com.capstone.hewankita.databinding.FragmentMenuBinding
+import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.utils.Constants
-import com.capstone.hewankita.utils.OptionDialogFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
@@ -30,7 +35,6 @@ class DoctorFragment : Fragment(), View.OnClickListener {
     private val binding get() = _binding!!
 
     private lateinit var btnNext: ButtonValidation
-    private lateinit var tvOutlet: EditTextValidation
     private lateinit var tvBookingDate: EditTextValidation
     private lateinit var tvBookingTime: EditTextValidation
     private lateinit var auth: FirebaseAuth
@@ -53,29 +57,15 @@ class DoctorFragment : Fragment(), View.OnClickListener {
 
         binding.tvBookingDate.setOnClickListener(this)
         binding.tvBookingTime.setOnClickListener(this)
-        binding.tvOutlet.setOnClickListener(this)
         binding.btnNext.setOnClickListener(this)
 
         btnNext = binding.btnNext
-        tvOutlet = binding.tvOutlet
         tvBookingDate = binding.tvBookingDate
         tvBookingTime = binding.tvBookingTime
 
         auth = FirebaseAuth.getInstance()
 
         setButton()
-
-        tvOutlet.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                setButton()
-            }
-
-            override fun afterTextChanged(s: Editable) {
-            }
-        })
 
         tvBookingDate.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -101,27 +91,20 @@ class DoctorFragment : Fragment(), View.OnClickListener {
             }
         })
 
+        getDataOutlet()
+
         return root
     }
 
     private fun setButton() {
-        val tvOutlet = tvOutlet.text
         val tvBookingDate = tvBookingDate.text
         val tvBookingTime = tvBookingTime.text
-        btnNext.isEnabled = tvOutlet != null && tvOutlet.toString().isNotEmpty() &&
+        btnNext.isEnabled =
                 tvBookingDate != null && tvBookingDate.toString().isNotEmpty() &&
                 tvBookingTime != null && tvBookingTime.toString().isNotEmpty()
     }
 
     override fun onClick(v: View?) {
-        if (v == binding.tvOutlet) {
-            val mOptionDialogFragment = OptionDialogFragment()
-            val mFragmentManager = childFragmentManager
-            mOptionDialogFragment.show(
-                mFragmentManager,
-                OptionDialogFragment::class.java.simpleName
-            )
-        }
         if (v === binding.tvBookingDate) {
             val c = Calendar.getInstance()
             mYear = c[Calendar.YEAR]
@@ -169,6 +152,8 @@ class DoctorFragment : Fragment(), View.OnClickListener {
             timePicker.show()
         }
         if (v == binding.btnNext) {
+            val outletId = binding.tvOutletId.text.toString().trim()
+            val outletEmail = binding.tvOutletEmail.text.toString().trim()
             val outlet = binding.tvOutlet.text.toString().trim()
             val bookingDate = "${getString(R.string.bookingDate)}:  ${
                 binding.tvBookingDate.text.toString().trim()
@@ -177,12 +162,14 @@ class DoctorFragment : Fragment(), View.OnClickListener {
                 binding.tvBookingTime.text.toString().trim()
             }"
 
-            addService(outlet, bookingDate, bookingTime)
+            addService(outlet, bookingDate, bookingTime, outletId, outletEmail)
             Toast.makeText(
                 requireActivity(),
                 resources.getString(R.string.booking_success),
                 Toast.LENGTH_SHORT
             ).show()
+            val intent = Intent(requireActivity(), BottomActivity::class.java)
+            startActivity(intent)
             activity?.finish()
         } else {
             Toast.makeText(
@@ -205,14 +192,7 @@ class DoctorFragment : Fragment(), View.OnClickListener {
         return !time2!!.before(time1)
     }
 
-    internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener =
-        object : OptionDialogFragment.OnOptionDialogListener {
-            override fun onOptionChosen(text: String?) {
-                binding.tvOutlet.setText(text)
-            }
-        }
-
-    private fun addService(outlet: String, bookingDate: String, bookingTime: String) {
+    private fun addService(outlet: String, bookingDate: String, bookingTime: String, outletEmail: String, outletId: String) {
         val user: FirebaseUser? = auth.currentUser
         val userEmail: String? = user!!.email
 
@@ -226,14 +206,38 @@ class DoctorFragment : Fragment(), View.OnClickListener {
             Constants.CONST_SERVICE_DATE to bookingDate,
             Constants.CONST_SERVICE_TIME to bookingTime,
             Constants.CONST_USER_EMAIL to userEmail.toString(),
-            Constants.CONST_KEY to key
+            Constants.CONST_KEY to key,
+            Constants.CONST_SERVICE_OUTLET_ID to outletId,
+            Constants.CONST_SERVICE_OUTLET_EMAIL to outletEmail
         )
 
         databaseReference.push().setValue(hashMap)
     }
 
+    private fun getDataOutlet(){
+        val outletID = requireActivity().intent.getStringExtra(OUTLET_ID)
+
+        val dbRef = FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_USER).child(outletID!!)
+        dbRef.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val user = snapshot.getValue(AllData::class.java)
+                binding.tvOutlet.text = user!!.Username
+                binding.tvOutletId.text = user.Key
+                binding.tvOutletEmail.text = user.Email
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object{
+        const val OUTLET_ID = "Id"
     }
 }

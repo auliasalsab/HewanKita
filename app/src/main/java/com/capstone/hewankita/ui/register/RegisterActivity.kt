@@ -68,6 +68,7 @@ class RegisterActivity : AppCompatActivity() {
                     hashMap[Constants.CONST_USER_USERNAME] = username
                     hashMap[Constants.CONST_USER_EMAIL] = email
                     hashMap[Constants.CONST_USER_TYPE] = type
+                    hashMap[Constants.CONST_KEY] = userId
 
                     databaseReference.setValue(hashMap).addOnCompleteListener(this) {
                         if (it.isSuccessful) {

@@ -17,6 +17,8 @@ class Constants {
 
         //Data Service
         const val CONST_SERVICE_OUTLET = "Outlet"
+        const val CONST_SERVICE_OUTLET_ID = "OutletID"
+        const val CONST_SERVICE_OUTLET_EMAIL = "OutletEmail"
         const val CONST_SERVICE_DATE = "Date"
         const val CONST_SERVICE_TIME = "Time"
         const val CONST_SERVICE_CHECK_IN = "CheckIn"
@@ -32,15 +34,15 @@ class Constants {
         const val CONST_USER_EMAIL = "Email"
         const val CONST_USER_TYPE = "Type"
         const val CONST_USER_PHONE = "Phone"
-        const val CONST_USER_IMG = "Profile Image"
+        const val CONST_USER_IMG = "ProfileImage"
         const val CONST_USER_ADDRESS = "Address"
 
         //Data Pet
         const val CONST_PET_SPECIES = "Species"
         const val CONST_PET_GENDER = "Gender"
-        const val CONST_PET_DATE_OF_BIRTH = "Date of Birth"
+        const val CONST_PET_DATE_OF_BIRTH = "DateOfBirth"
         const val CONST_PET_WEIGHT = "Weight"
-        const val CONST_PET_FEATHER_COLOUR = "Feather Colour"
+        const val CONST_PET_FEATHER_COLOUR = "FeatherColour"
         const val CONST_PET_OTHER = "Other"
 
         const val CONST_KEY = "Key"
