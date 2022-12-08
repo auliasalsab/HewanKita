@@ -95,6 +95,8 @@
     <string name="register_as_pet_shop">Register as Pet-Shop</string>
     <string name="user">User</string>
     <string name="profile_has_been_updated">Profile has been updated</string>
+    <string name="add_pet">Add Pet</string>
+    <string name="add_pet_successful">Add Data Successful</string>
 
     <string-array name="deskripsi">
         <item>Cara Merawat Hewan Peliharaan dirumah</item>

@@ -91,50 +91,27 @@
             android:layout_width="155dp"
             android:layout_height="155dp"
             android:layout_marginTop="16dp"
-            android:padding="32dp"
             android:background="@drawable/border_main"
-            app:layout_constraintTop_toBottomOf="@id/ivBackground"
-            app:layout_constraintStart_toStartOf="@id/ivBackground"
             android:contentDescription="@string/logo"
-            app:srcCompat="@drawable/doctor"/>
+            android:padding="32dp"
+            app:layout_constraintStart_toStartOf="@id/ivBackground"
+            app:layout_constraintTop_toBottomOf="@id/ivBackground"
+            app:srcCompat="@drawable/doctor" />
 
         <TextView
             android:id="@+id/tvDoctor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="@string/animalDoctor"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="140dp"
+            android:textColor="@color/secondary_color"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:textColor="@color/secondary_color"
-            app:layout_constraintStart_toStartOf="@id/ivDoctor"
-            app:layout_constraintTop_toBottomOf="@id/ivBackground"/>
+            app:layout_constraintBottom_toBottomOf="@+id/ivDoctor"
+            app:layout_constraintEnd_toEndOf="@+id/ivDoctor"
+            app:layout_constraintStart_toStartOf="@id/ivDoctor" />
 
-        <ImageView
-            android:id="@+id/ivConsultation"
-            android:layout_width="155dp"
-            android:layout_height="155dp"
-            android:layout_marginTop="16dp"
-            android:padding="32dp"
-            android:background="@drawable/border_main"
-            app:layout_constraintTop_toBottomOf="@id/ivBackground"
-            app:layout_constraintEnd_toEndOf="@id/ivBackground"
-            android:contentDescription="@string/logo"
-            app:srcCompat="@drawable/consultation"/>
 
-        <TextView
-            android:id="@+id/tvConsultation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/consultation"
-            android:layout_marginEnd="42dp"
-            android:layout_marginTop="138dp"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:textColor="@color/secondary_color"
-            app:layout_constraintEnd_toEndOf="@id/ivConsultation"
-            app:layout_constraintTop_toBottomOf="@id/ivBackground"/>
 
         <ImageView
             android:id="@+id/ivGrooming"
@@ -152,66 +129,62 @@
             android:id="@+id/tvGrooming"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="@string/grooming"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="310dp"
+            android:textColor="@color/secondary_color"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:textColor="@color/secondary_color"
-            app:layout_constraintStart_toStartOf="@id/ivGrooming"
-            app:layout_constraintTop_toBottomOf="@id/ivBackground"/>
+            app:layout_constraintBottom_toBottomOf="@+id/ivGrooming"
+            app:layout_constraintEnd_toEndOf="@+id/ivGrooming"
+            app:layout_constraintStart_toStartOf="@id/ivGrooming" />
 
         <ImageView
             android:id="@+id/ivCare"
             android:layout_width="155dp"
             android:layout_height="155dp"
-            android:layout_marginTop="16dp"
-            android:padding="32dp"
-            android:layout_marginStart="16dp"
             android:background="@drawable/border_main"
-            app:layout_constraintTop_toBottomOf="@id/ivConsultation"
-            app:layout_constraintEnd_toEndOf="@id/ivBackground"
             android:contentDescription="@string/logo"
-            app:srcCompat="@drawable/care"/>
+            android:padding="32dp"
+            app:layout_constraintEnd_toEndOf="@id/ivBackground"
+            app:layout_constraintTop_toTopOf="@+id/ivDoctor"
+            app:srcCompat="@drawable/care" />
 
         <TextView
             android:id="@+id/tvCare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="@string/care"
-            android:layout_marginEnd="65dp"
-            android:layout_marginTop="310dp"
+            android:textColor="@color/secondary_color"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:textColor="@color/secondary_color"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCare"
             app:layout_constraintEnd_toEndOf="@id/ivCare"
-            app:layout_constraintTop_toBottomOf="@id/ivBackground"/>
+            app:layout_constraintStart_toStartOf="@+id/ivCare" />
 
         <ImageView
             android:id="@+id/ivVaccination"
             android:layout_width="155dp"
             android:layout_height="155dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="72dp"
-            android:padding="32dp"
             android:background="@drawable/border_main"
-            app:layout_constraintTop_toBottomOf="@id/ivGrooming"
-            app:layout_constraintStart_toStartOf="@id/ivBackground"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="@string/logo"
-            app:srcCompat="@drawable/vaccination"/>
+            android:padding="32dp"
+            app:layout_constraintEnd_toEndOf="@+id/ivCare"
+            app:layout_constraintStart_toStartOf="@+id/ivConsultation"
+            app:layout_constraintTop_toTopOf="@+id/ivGrooming"
+            app:srcCompat="@drawable/vaccination" />
 
         <TextView
             android:id="@+id/tvVaccination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="@string/vaccination"
-            android:layout_marginStart="42dp"
-            android:layout_marginTop="480dp"
+            android:textColor="@color/secondary_color"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:textColor="@color/secondary_color"
-            app:layout_constraintStart_toStartOf="@id/ivVaccination"
-            app:layout_constraintTop_toBottomOf="@id/ivBackground"/>
+            app:layout_constraintBottom_toBottomOf="@+id/ivVaccination"
+            app:layout_constraintEnd_toEndOf="@+id/ivVaccination"
+            app:layout_constraintStart_toStartOf="@id/ivVaccination" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

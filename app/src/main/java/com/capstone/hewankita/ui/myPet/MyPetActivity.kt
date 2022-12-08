@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.capstone.hewankita.R
 import com.capstone.hewankita.databinding.ActivityMyPetBinding
+import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.ui.bottom.ui.profile.ProfileFragment
 import com.capstone.hewankita.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -52,9 +53,9 @@ class MyPetActivity : AppCompatActivity() {
 
         val user: FirebaseUser? = auth.currentUser
         val userEmail: String = user!!.email.toString()
+        val key = intent.getStringExtra(PET_ID)
 
-        val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().reference
-        databaseReference.child(Constants.TABLE_DATA_PET).orderByChild(Constants.CONST_USER_EMAIL).equalTo(userEmail)
+        val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_PET)
 
         val hashMap = mapOf<String, Any>(
             Constants.CONST_PET_SPECIES to species,
@@ -65,8 +66,8 @@ class MyPetActivity : AppCompatActivity() {
             Constants.CONST_USER_EMAIL to userEmail
         )
 
-        databaseReference.updateChildren(hashMap).addOnCompleteListener{
-            val intent = Intent(this@MyPetActivity, ProfileFragment::class.java)
+        databaseReference.child(key.toString()).updateChildren(hashMap).addOnCompleteListener{
+            val intent = Intent(this@MyPetActivity, BottomActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -84,27 +85,28 @@ class MyPetActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()
     ) {
         if (it.resultCode == RESULT_OK) {
-
-            val user = auth.currentUser
-            val userEmail = user!!.email
             val selectedImage: Uri = it.data?.data as Uri
 
             val storageRef = FirebaseStorage.getInstance().getReference("image/pet/${selectedImage.lastPathSegment}")
             storageRef.putFile(selectedImage).addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener {
 
+                    val key = intent.getStringExtra(PET_ID)
                     val database = Firebase.database
                     val databaseReference = database.getReference(Constants.TABLE_DATA_PET)
                     val hashMap = mapOf(
-                        Constants.CONST_USER_EMAIL to userEmail,
                         Constants.CONST_USER_IMG to it.toString()
                     )
-                    databaseReference.child(userEmail.toString()).setValue(hashMap)
+                    databaseReference.child(key.toString()).updateChildren(hashMap)
                 }
             }.addOnFailureListener{
                 Toast.makeText(this@MyPetActivity, "Request Time Out", Toast.LENGTH_SHORT).show()
             }
             binding.imgPet.setImageURI(selectedImage)
         }
+    }
+
+    companion object {
+        const val PET_ID = "Id"
     }
 }

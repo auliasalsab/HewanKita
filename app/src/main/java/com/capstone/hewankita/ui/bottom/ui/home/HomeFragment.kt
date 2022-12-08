@@ -39,7 +39,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
         activity?.setTitle(R.string.title_home)
 
         binding.ivDoctor.setOnClickListener(this)
-        binding.ivConsultation.setOnClickListener(this)
         binding.ivGrooming.setOnClickListener(this)
         binding.ivCare.setOnClickListener(this)
         binding.ivVaccination.setOnClickListener(this)
@@ -49,10 +48,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View) {
         if(v == binding.ivDoctor) {
             val intent = Intent(requireActivity(), DoctorList::class.java)
-            startActivity(intent)
-        }
-        if(v == binding.ivConsultation) {
-            val intent = Intent(requireActivity(), ListConsultant::class.java)
             startActivity(intent)
         }
         if(v == binding.ivGrooming) {

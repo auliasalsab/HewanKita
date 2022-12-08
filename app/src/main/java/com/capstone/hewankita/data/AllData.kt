@@ -23,6 +23,12 @@ data class AllData(
     var Judul: String? = null,
     var Deskripsi: String? = null,
     var TipsImage: String? = null,
-    var TipsUrl: String? = null
+    var TipsUrl: String? = null,
+
+    //Data Pet
+    var PetName: String? = null,
+    var Species: String? = null,
+    var Gender: String? = null,
+    var PetId: String? = null
 )
 

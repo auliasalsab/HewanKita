@@ -7,8 +7,8 @@ import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import com.capstone.hewankita.R
+import com.capstone.hewankita.data.AllData
 import com.capstone.hewankita.databinding.ActivityLoginBinding
-import com.capstone.hewankita.ui.admin.Admin
 import com.capstone.hewankita.ui.bottom.BottomActivity
 import com.capstone.hewankita.ui.register.RegisterActivity
 import com.capstone.hewankita.utils.Constants
@@ -28,7 +28,6 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         auth = FirebaseAuth.getInstance()
-
         binding.progressBar.visibility = View.GONE
 
         binding.apply {
@@ -51,10 +50,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser(email: String, password: String) {
-
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) {
                 if (it.isSuccessful) {
+                    startActivity(Intent(this@LoginActivity, BottomActivity::class.java))
+                    finish()
                 } else {
                     Toast.makeText(
                         this@LoginActivity,
@@ -64,7 +64,6 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
     }
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
