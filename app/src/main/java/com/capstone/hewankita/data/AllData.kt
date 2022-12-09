@@ -27,6 +27,7 @@ data class AllData(
 
     //Data Pet
     var PetName: String? = null,
+    var PetImg: String? = null,
     var Species: String? = null,
     var Gender: String? = null,
     var PetId: String? = null

@@ -171,7 +171,7 @@
                 android:background="@drawable/border"
                 android:fontFamily="sans-serif-light"
                 android:hint="@string/berat"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

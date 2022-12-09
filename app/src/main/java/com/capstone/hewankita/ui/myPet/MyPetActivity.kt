@@ -39,17 +39,18 @@ class MyPetActivity : AppCompatActivity() {
 
             fabSave.setOnClickListener{
 
+                val etNamePet = etNamePet.text.toString().trim()
                 val etSpecies = etSpesies.text.toString().trim()
                 val etGender = etJenisKelamin.text.toString().trim()
                 val etDatOB = etTgl.text.toString().trim()
                 val etWeight = etBerat.text.toString().trim()
                 val etFeatherColour = etWarna.text.toString().trim()
-                addPet(etSpecies, etGender, etDatOB, etWeight, etFeatherColour)
+                addPet(etNamePet, etSpecies, etGender, etDatOB, etWeight, etFeatherColour)
             }
         }
     }
 
-    private fun addPet(species: String, gender: String, dateOB: String, weight: String, featherColour: String){
+    private fun addPet(petName: String, species: String, gender: String, dateOB: String, weight: String, featherColour: String){
 
         val user: FirebaseUser? = auth.currentUser
         val userEmail: String = user!!.email.toString()
@@ -58,6 +59,7 @@ class MyPetActivity : AppCompatActivity() {
         val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_PET)
 
         val hashMap = mapOf<String, Any>(
+            Constants.CONST_PET_NAME to petName,
             Constants.CONST_PET_SPECIES to species,
             Constants.CONST_PET_GENDER to gender,
             Constants.CONST_PET_DATE_OF_BIRTH to dateOB,
@@ -95,7 +97,7 @@ class MyPetActivity : AppCompatActivity() {
                     val database = Firebase.database
                     val databaseReference = database.getReference(Constants.TABLE_DATA_PET)
                     val hashMap = mapOf(
-                        Constants.CONST_USER_IMG to it.toString()
+                        Constants.CONST_PET_IMG to it.toString()
                     )
                     databaseReference.child(key.toString()).updateChildren(hashMap)
                 }

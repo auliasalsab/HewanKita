@@ -45,6 +45,7 @@ class Constants {
         const val CONST_PET_FEATHER_COLOUR = "FeatherColour"
         const val CONST_PET_NAME = "PetName"
         const val CONST_PET_ID = "PetId"
+        const val CONST_PET_IMG = "PetImg"
 
         const val CONST_KEY = "Key"
     }
