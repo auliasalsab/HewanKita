@@ -7,218 +7,224 @@
     android:background="@color/secondaryGray"
     tools:context=".ui.myPet.MyPetActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgPet"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/logo"
-            app:civ_border_width="1dp"
-            app:civ_border_color="@color/gray"/>
-        <RelativeLayout
-            android:id="@+id/container2"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="750dp"
-            android:background="@drawable/cardviewbackground"
-            android:orientation="vertical"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgPet">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tvNamePet"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgPet"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/logo"
+                app:civ_border_color="@color/gray"
+                app:civ_border_width="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RelativeLayout
+                android:id="@+id/container2"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:background="@drawable/cardviewbackground"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgPet">
+
+                <TextView
+                    android:id="@+id/tvNamePet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/petName"
+                    android:textColor="@color/primary_color"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etNamePet"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/tvNamePet"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="25dp"
+                    android:autofillHints="username"
+                    android:background="@drawable/border"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/petName"
+                    android:inputType="textPersonName"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvSpesies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etNamePet"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/spesies"
+                    android:textColor="@color/primary_color"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etSpesies"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/tvSpesies"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="25dp"
+                    android:autofillHints="username"
+                    android:background="@drawable/border"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/spesies"
+                    android:inputType="textPersonName"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvJenisKelamin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etSpesies"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/jenis_kelamin"
+                    android:textColor="@color/primary_color"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etJenisKelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/tvJenisKelamin"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="25dp"
+                    android:autofillHints="username"
+                    android:background="@drawable/border"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/jenis_kelamin"
+                    android:inputType="textPersonName"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etJenisKelamin"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/age"
+                    android:textColor="@color/primary_color"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etTgl"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/tvAge"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="25dp"
+                    android:autofillHints="username"
+                    android:background="@drawable/border"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/age"
+                    android:inputType="date"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvBerat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etTgl"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/berat"
+                    android:textColor="@color/primary_color"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etBerat"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/tvBerat"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="25dp"
+                    android:autofillHints="username"
+                    android:background="@drawable/border"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/berat"
+                    android:inputType="numberDecimal"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvWarna"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etBerat"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/warna_bulu"
+                    android:textColor="@color/primary_color"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etWarna"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/tvWarna"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="25dp"
+                    android:autofillHints="username"
+                    android:background="@drawable/border"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/warna_bulu"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </RelativeLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/petName"
-                android:textColor="@color/primary_color"
-                android:textSize="18sp" />
+                android:layout_gravity="right|bottom"
+                android:contentDescription="@string/btnSave"
+                android:minHeight="50dp"
+                android:src="@drawable/ic_baseline_check"
+                android:tintMode="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:useCompatPadding="true"
+                tools:ignore="SpeakableTextPresentCheck" />
 
-            <EditText
-                android:id="@+id/etNamePet"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_below="@+id/tvNamePet"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="25dp"
-                android:autofillHints="username"
-                android:background="@drawable/border"
-                android:fontFamily="sans-serif-light"
-                android:hint="@string/petName"
-                android:inputType="textPersonName"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/tvSpesies"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etNamePet"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/spesies"
-                android:textColor="@color/primary_color"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etSpesies"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_below="@+id/tvSpesies"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="25dp"
-                android:autofillHints="username"
-                android:background="@drawable/border"
-                android:fontFamily="sans-serif-light"
-                android:hint="@string/spesies"
-                android:inputType="textPersonName"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/tvJenisKelamin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etSpesies"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/jenis_kelamin"
-                android:textColor="@color/primary_color"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etJenisKelamin"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_below="@+id/tvJenisKelamin"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="25dp"
-                android:autofillHints="username"
-                android:background="@drawable/border"
-                android:fontFamily="sans-serif-light"
-                android:hint="@string/jenis_kelamin"
-                android:inputType="textPersonName"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/tvAge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etJenisKelamin"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/age"
-                android:textColor="@color/primary_color"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etTgl"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_below="@+id/tvAge"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="25dp"
-                android:autofillHints="username"
-                android:background="@drawable/border"
-                android:fontFamily="sans-serif-light"
-                android:hint="@string/age"
-                android:inputType="date"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/tvBerat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etTgl"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/berat"
-                android:textColor="@color/primary_color"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etBerat"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_below="@+id/tvBerat"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="25dp"
-                android:autofillHints="username"
-                android:background="@drawable/border"
-                android:fontFamily="sans-serif-light"
-                android:hint="@string/berat"
-                android:inputType="numberDecimal"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/tvWarna"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etBerat"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/warna_bulu"
-                android:textColor="@color/primary_color"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etWarna"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_below="@+id/tvWarna"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="25dp"
-                android:autofillHints="username"
-                android:background="@drawable/border"
-                android:fontFamily="sans-serif-light"
-                android:hint="@string/warna_bulu"
-                android:inputType="text"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-        </RelativeLayout>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|bottom"
-            android:contentDescription="@string/btnSave"
-            android:minHeight="50dp"
-            android:src="@drawable/ic_baseline_check"
-            android:tintMode="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:useCompatPadding="true"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

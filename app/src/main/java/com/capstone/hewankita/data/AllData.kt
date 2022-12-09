@@ -30,6 +30,8 @@ data class AllData(
     var PetImg: String? = null,
     var Species: String? = null,
     var Gender: String? = null,
-    var PetId: String? = null
+    var Weight: String? = null,
+    var FeatherColour: String? = null,
+    var DateOfBirth: String? = null
 )
 

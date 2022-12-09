@@ -16,7 +16,7 @@
         android:theme="@style/Theme.HewanKita"
         tools:targetApi="31">
         <activity
-            android:name=".ui.myPet.ListPet"
+            android:name=".ui.myPet.PetActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

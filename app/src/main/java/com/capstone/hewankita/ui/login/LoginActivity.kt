@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.capstone.hewankita.R
@@ -46,6 +48,30 @@ class LoginActivity : AppCompatActivity() {
                 val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
                 startActivity(intent)
             }
+            etEmail.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    setButtonEnable()
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+
+                }
+            })
+            etPassword.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    setButtonEnable()
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+
+                }
+            })
         }
     }
 
@@ -53,9 +79,11 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) {
                 if (it.isSuccessful) {
+                    showLoading(true)
                     startActivity(Intent(this@LoginActivity, BottomActivity::class.java))
                     finish()
                 } else {
+                    showLoading(false)
                     Toast.makeText(
                         this@LoginActivity,
                         getString(R.string.login_error),
@@ -64,6 +92,19 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
     }
+
+    private fun setButtonEnable() {
+        binding.apply {
+            val email = etEmail.text
+            val password = etPassword.text
+            btnLogin.isEnabled = email.toString().isNotEmpty() && password.toString().isNotEmpty()
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean){
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

@@ -12,9 +12,9 @@ import com.capstone.hewankita.databinding.FragmentProfileBinding
 import com.capstone.hewankita.ui.check_schedule.CheckSchedule
 import com.capstone.hewankita.ui.editProfile.EditProfileActivity
 import com.capstone.hewankita.ui.information.InformationActivity
-import com.capstone.hewankita.ui.myPet.MyPetActivity
 import com.capstone.hewankita.ui.login.LoginActivity
-import com.capstone.hewankita.ui.myPet.ListPet
+import com.capstone.hewankita.ui.myPet.MyPetActivity
+import com.capstone.hewankita.ui.myPet.PetActivity
 import com.capstone.hewankita.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -54,7 +54,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View) {
         if(v == binding.column1) {
-            val intent = Intent(requireActivity(), ListPet::class.java)
+            val intent = Intent(requireActivity(), PetActivity::class.java)
             startActivity(intent)
         }
         if(v == binding.column2) {

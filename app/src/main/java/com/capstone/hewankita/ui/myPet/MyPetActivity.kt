@@ -53,8 +53,8 @@ class MyPetActivity : AppCompatActivity() {
     private fun addPet(petName: String, species: String, gender: String, dateOB: String, weight: String, featherColour: String){
 
         val user: FirebaseUser? = auth.currentUser
-        val userEmail: String = user!!.email.toString()
-        val key = intent.getStringExtra(PET_ID)
+        val userUid: String = user!!.uid
+        val userEmail: String = user.email.toString()
 
         val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_PET)
 
@@ -68,7 +68,7 @@ class MyPetActivity : AppCompatActivity() {
             Constants.CONST_USER_EMAIL to userEmail
         )
 
-        databaseReference.child(key.toString()).updateChildren(hashMap).addOnCompleteListener{
+        databaseReference.child(userUid).updateChildren(hashMap).addOnCompleteListener{
             val intent = Intent(this@MyPetActivity, BottomActivity::class.java)
             startActivity(intent)
             finish()
@@ -93,22 +93,19 @@ class MyPetActivity : AppCompatActivity() {
             storageRef.putFile(selectedImage).addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener {
 
-                    val key = intent.getStringExtra(PET_ID)
+                    val user: FirebaseUser = auth.currentUser!!
+                    val userUid: String = user.uid
                     val database = Firebase.database
                     val databaseReference = database.getReference(Constants.TABLE_DATA_PET)
                     val hashMap = mapOf(
                         Constants.CONST_PET_IMG to it.toString()
                     )
-                    databaseReference.child(key.toString()).updateChildren(hashMap)
+                    databaseReference.child(userUid).updateChildren(hashMap)
                 }
             }.addOnFailureListener{
                 Toast.makeText(this@MyPetActivity, "Request Time Out", Toast.LENGTH_SHORT).show()
             }
             binding.imgPet.setImageURI(selectedImage)
         }
-    }
-
-    companion object {
-        const val PET_ID = "Id"
     }
 }

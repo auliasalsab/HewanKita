@@ -97,6 +97,7 @@
     <string name="profile_has_been_updated">Profile has been updated</string>
     <string name="add_pet">Add Pet</string>
     <string name="add_pet_successful">Add Data Successful</string>
+    <string name="floating_move_to_edit">Floating Move To Edit</string>
 
     <string-array name="deskripsi">
         <item>Cara Merawat Hewan Peliharaan dirumah</item>
