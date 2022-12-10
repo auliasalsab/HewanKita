@@ -33,30 +33,44 @@ class MyPetActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         binding.apply {
-            imgPet.setOnClickListener{
+            imgPet.setOnClickListener {
                 startGallery()
             }
 
-            fabSave.setOnClickListener{
-
+            fabSave.setOnClickListener {
                 val etNamePet = etNamePet.text.toString().trim()
                 val etSpecies = etSpesies.text.toString().trim()
                 val etGender = etJenisKelamin.text.toString().trim()
                 val etDatOB = etTgl.text.toString().trim()
                 val etWeight = etBerat.text.toString().trim()
                 val etFeatherColour = etWarna.text.toString().trim()
-                addPet(etNamePet, etSpecies, etGender, etDatOB, etWeight, etFeatherColour)
+                val etOther = etOther.text.toString().trim()
+                if (etNamePet.isNotEmpty() && etSpecies.isNotEmpty() && etGender.isNotEmpty() && etDatOB.isNotEmpty() && etWeight.isNotEmpty() && etFeatherColour.isNotEmpty() && etOther.isNotEmpty()) {
+                    addPet(etNamePet, etSpecies, etGender, etDatOB, etWeight, etFeatherColour, etOther)
+                }
+                else{
+                    Toast.makeText(this@MyPetActivity, getString(R.string.error_field), Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
 
-    private fun addPet(petName: String, species: String, gender: String, dateOB: String, weight: String, featherColour: String){
+    private fun addPet(
+        petName: String,
+        species: String,
+        gender: String,
+        dateOB: String,
+        weight: String,
+        featherColour: String,
+        other: String
+    ) {
 
         val user: FirebaseUser? = auth.currentUser
         val userUid: String = user!!.uid
         val userEmail: String = user.email.toString()
 
-        val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_PET)
+        val databaseReference: DatabaseReference =
+            FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_PET)
 
         val hashMap = mapOf<String, Any>(
             Constants.CONST_PET_NAME to petName,
@@ -65,17 +79,18 @@ class MyPetActivity : AppCompatActivity() {
             Constants.CONST_PET_DATE_OF_BIRTH to dateOB,
             Constants.CONST_PET_WEIGHT to weight,
             Constants.CONST_PET_FEATHER_COLOUR to featherColour,
+            Constants.CONST_PET_OTHER to other,
             Constants.CONST_USER_EMAIL to userEmail
         )
 
-        databaseReference.child(userUid).updateChildren(hashMap).addOnCompleteListener{
+        databaseReference.child(userUid).updateChildren(hashMap).addOnCompleteListener {
             val intent = Intent(this@MyPetActivity, BottomActivity::class.java)
             startActivity(intent)
             finish()
         }
     }
 
-    private fun startGallery(){
+    private fun startGallery() {
         val intent = Intent()
         intent.action = Intent.ACTION_GET_CONTENT
         intent.type = "image/*"
@@ -89,7 +104,8 @@ class MyPetActivity : AppCompatActivity() {
         if (it.resultCode == RESULT_OK) {
             val selectedImage: Uri = it.data?.data as Uri
 
-            val storageRef = FirebaseStorage.getInstance().getReference("image/pet/${selectedImage.lastPathSegment}")
+            val storageRef = FirebaseStorage.getInstance()
+                .getReference("image/pet/${selectedImage.lastPathSegment}")
             storageRef.putFile(selectedImage).addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener {
 
@@ -102,7 +118,7 @@ class MyPetActivity : AppCompatActivity() {
                     )
                     databaseReference.child(userUid).updateChildren(hashMap)
                 }
-            }.addOnFailureListener{
+            }.addOnFailureListener {
                 Toast.makeText(this@MyPetActivity, "Request Time Out", Toast.LENGTH_SHORT).show()
             }
             binding.imgPet.setImageURI(selectedImage)

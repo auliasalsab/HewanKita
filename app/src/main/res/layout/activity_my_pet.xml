@@ -19,6 +19,7 @@
                 android:id="@+id/imgPet"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginTop="16dp"
                 android:src="@drawable/logo"
                 app:civ_border_color="@color/gray"
                 app:civ_border_width="1dp"
@@ -30,6 +31,7 @@
                 android:id="@+id/container2"
                 android:layout_width="match_parent"
                 android:layout_height="750dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/cardviewbackground"
                 android:orientation="vertical"
                 android:paddingBottom="10dp"
@@ -206,6 +208,36 @@
                     android:fontFamily="sans-serif-light"
                     android:hint="@string/warna_bulu"
                     android:inputType="text"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etWarna"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/ciri_lainnya"
+                    android:textColor="@color/primary_color"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etOther"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/tvOther"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="25dp"
+                    android:autofillHints="username"
+                    android:background="@drawable/border"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/ciri_lainnya"
+                    android:inputType="text"
+                    android:gravity="start"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />

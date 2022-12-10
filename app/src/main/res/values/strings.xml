@@ -98,6 +98,7 @@
     <string name="floating_move_to_edit">Floating Move To Edit</string>
     <string name="hewan_kita">Hewan Kita</string>
     <string name="picture">Picture</string>
+    <string name="error_field">All input must be filled</string>
 
     <string-array name="deskripsi">
         <item>Cara Merawat Hewan Peliharaan dirumah</item>

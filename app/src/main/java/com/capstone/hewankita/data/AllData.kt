@@ -32,6 +32,7 @@ data class AllData(
     var Gender: String? = null,
     var Weight: String? = null,
     var FeatherColour: String? = null,
-    var DateOfBirth: String? = null
+    var DateOfBirth: String? = null,
+    var PetOther: String? = null
 )
 

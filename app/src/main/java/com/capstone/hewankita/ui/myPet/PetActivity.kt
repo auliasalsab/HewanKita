@@ -62,6 +62,8 @@ class PetActivity : AppCompatActivity() {
                     binding.tvBuluPet.text = pet.FeatherColour
                     binding.tvSpeciesPet.text = pet.Species
                     binding.tvTtlPet.text = pet.DateOfBirth
+                    binding.tvCiriPet.text = pet.PetOther
+
                 }
                 else{
                     Toast.makeText(this@PetActivity, getString(R.string.no_data), Toast.LENGTH_SHORT).show()

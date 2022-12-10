@@ -45,10 +45,15 @@ class EditProfileActivity : AppCompatActivity() {
                 val phone = etNoHp.text.toString().trim()
                 val address = etAddress.text.toString().trim()
 
-                saveProfile(username, phone, address)
-                val intent = Intent(this@EditProfileActivity, BottomActivity::class.java)
-                startActivity(intent)
-                finish()
+                if (username.isNotEmpty() && phone.isNotEmpty() && address.isNotEmpty()) {
+                    saveProfile(username, phone, address)
+                    val intent = Intent(this@EditProfileActivity, BottomActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                else{
+                    Toast.makeText(this@EditProfileActivity, getString(R.string.error_field), Toast.LENGTH_SHORT).show()
+                }
             }
         }
         getData()
