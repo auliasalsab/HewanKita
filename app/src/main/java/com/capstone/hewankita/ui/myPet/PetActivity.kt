@@ -3,6 +3,7 @@ package com.capstone.hewankita.ui.myPet
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.capstone.hewankita.R
 import com.capstone.hewankita.data.AllData
@@ -31,9 +32,9 @@ class PetActivity : AppCompatActivity() {
             fabEdit.setOnClickListener{
                 val intent = Intent(this@PetActivity, MyPetActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
-
         getDataPet()
     }
 
@@ -49,18 +50,23 @@ class PetActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                val pet = snapshot.getValue(AllData::class.java)
-                binding.tvNamePet.text = pet!!.PetName
-                binding.tvGenderPet.text = pet.Gender
-                Glide.with(this@PetActivity)
-                    .load(pet.PetImg)
-                    .into(binding.imgPet)
-                binding.tvBeratPet.text = pet.Weight
-                binding.tvBuluPet.text = pet.FeatherColour
-                binding.tvSpeciesPet.text = pet.Species
-                binding.tvTtlPet.text = pet.DateOfBirth
+                if (snapshot.exists()) {
+
+                    val pet = snapshot.getValue(AllData::class.java)
+                    binding.tvNamePet.text = pet!!.PetName
+                    binding.tvGenderPet.text = pet.Gender
+                    Glide.with(applicationContext)
+                        .load(pet.PetImg)
+                        .into(binding.imgPet)
+                    binding.tvBeratPet.text = pet.Weight
+                    binding.tvBuluPet.text = pet.FeatherColour
+                    binding.tvSpeciesPet.text = pet.Species
+                    binding.tvTtlPet.text = pet.DateOfBirth
+                }
+                else{
+                    Toast.makeText(this@PetActivity, getString(R.string.no_data), Toast.LENGTH_SHORT).show()
+                }
             }
         })
-
     }
 }

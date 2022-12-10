@@ -79,47 +79,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/register_as_pet_shop"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/sw_type"
-        app:layout_constraintStart_toStartOf="@+id/etPassword"
-        app:layout_constraintTop_toTopOf="@+id/sw_type" />
-
-    <TextView
-        android:id="@+id/tv_type_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/user"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/sw_type"
-        app:layout_constraintEnd_toStartOf="@+id/sw_type"
-        app:layout_constraintTop_toTopOf="@+id/sw_type"
-        android:visibility="invisible"/>
-
-    <Switch
-        android:id="@+id/sw_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/etPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
-
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/border_btn"
         android:text="@string/register"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sw_type" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <ProgressBar
         android:id="@+id/progressBar"

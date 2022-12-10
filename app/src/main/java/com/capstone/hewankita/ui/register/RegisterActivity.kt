@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.capstone.hewankita.R
@@ -40,21 +42,49 @@ class RegisterActivity : AppCompatActivity() {
                 val username = binding.etName.text.toString()
                 val email = binding.etEmail.text.toString()
                 val password = binding.etPassword.text.toString()
-                val type = binding.tvTypeRegister.text.toString()
 
-                registerUserPetShop(username, email, password, type)
+                registerUserPetShop(username, email, password)
             }
-            swType.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked){
-                    tvTypeRegister.text = Constants.CHILD_USER_PET_SHOP
+
+            etEmail.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
-                else{
-                    tvTypeRegister.text = Constants.CHILD_USER_CUSTOMER
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    setButtonEnable()
                 }
-            }
+
+                override fun afterTextChanged(p0: Editable?) {
+
+                }
+            })
+            etPassword.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    setButtonEnable()
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+
+                }
+            })
+            etName.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    setButtonEnable()
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+
+                }
+            })
         }
     }
-    private fun registerUserPetShop(username: String, email: String, password: String, type: String) {
+    private fun registerUserPetShop(username: String, email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { it ->
                 if (it.isSuccessful) {
@@ -67,7 +97,6 @@ class RegisterActivity : AppCompatActivity() {
                     val hashMap: HashMap<String, String> = HashMap()
                     hashMap[Constants.CONST_USER_USERNAME] = username
                     hashMap[Constants.CONST_USER_EMAIL] = email
-                    hashMap[Constants.CONST_USER_TYPE] = type
                     hashMap[Constants.CONST_KEY] = userId
 
                     databaseReference.setValue(hashMap).addOnCompleteListener(this) {
@@ -85,6 +114,15 @@ class RegisterActivity : AppCompatActivity() {
                     Toast.makeText(this@RegisterActivity, getString(R.string.register_error), Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun setButtonEnable() {
+        binding.apply {
+            val email = etEmail.text
+            val password = etPassword.text
+            val username = etName.text
+            btnRegister.isEnabled = email.toString().isNotEmpty() && password.toString().isNotEmpty() && password.toString().length >= 6 && username.toString().isNotEmpty()
+        }
     }
     override fun onDestroy() {
         super.onDestroy()

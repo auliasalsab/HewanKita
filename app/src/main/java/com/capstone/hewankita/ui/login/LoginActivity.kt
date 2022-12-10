@@ -97,7 +97,7 @@ class LoginActivity : AppCompatActivity() {
         binding.apply {
             val email = etEmail.text
             val password = etPassword.text
-            btnLogin.isEnabled = email.toString().isNotEmpty() && password.toString().isNotEmpty()
+            btnLogin.isEnabled = email.toString().isNotEmpty() && password.toString().isNotEmpty() && password.toString().length >= 6
         }
     }
 

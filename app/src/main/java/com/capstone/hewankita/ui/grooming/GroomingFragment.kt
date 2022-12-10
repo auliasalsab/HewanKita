@@ -93,6 +93,37 @@ class GroomingFragment : Fragment(), View.OnClickListener {
 
         getDataOutlet()
 
+        binding.apply {
+            binding.btnNext.setOnClickListener{
+                val outletId = binding.tvOutletId.text.toString().trim()
+                val outletEmail = binding.tvOutletEmail.text.toString().trim()
+                val outlet = binding.tvOutlet.text.toString().trim()
+                val bookingDate = "${getString(R.string.bookingDate)}:  ${
+                    binding.tvBookingDate.text.toString().trim()
+                }"
+                val bookingTime = "${getString(R.string.bookingTime)}:  ${
+                    binding.tvBookingTime.text.toString().trim()
+                }"
+                if (outlet.isNotEmpty() && outletId.isNotEmpty() && outletEmail.isNotEmpty() && bookingTime.isNotEmpty() && bookingDate.isNotEmpty()) {
+                    addService(outlet, bookingDate, bookingTime, outletId, outletEmail)
+
+                    Toast.makeText(
+                        requireActivity(),
+                        resources.getString(R.string.booking_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    val intent = Intent(requireActivity(), BottomActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+                } else {
+                    Toast.makeText(
+                        requireActivity(),
+                        getString(R.string.booking_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
         return root
     }
 
@@ -150,33 +181,6 @@ class GroomingFragment : Fragment(), View.OnClickListener {
             }, mHour, mMinute, false)
 
             timePicker.show()
-        }
-        if (v == binding.btnNext) {
-            val outletId = binding.tvOutletId.text.toString().trim()
-            val outletEmail = binding.tvOutletEmail.text.toString().trim()
-            val outlet = binding.tvOutlet.text.toString().trim()
-            val bookingDate = "${getString(R.string.bookingDate)}:  ${
-                binding.tvBookingDate.text.toString().trim()
-            }"
-            val bookingTime = "${getString(R.string.bookingTime)}:  ${
-                binding.tvBookingTime.text.toString().trim()
-            }"
-
-            addService(outlet, bookingDate, bookingTime, outletId, outletEmail)
-            Toast.makeText(
-                requireActivity(),
-                resources.getString(R.string.booking_success),
-                Toast.LENGTH_SHORT
-            ).show()
-            val intent = Intent(requireActivity(), BottomActivity::class.java)
-            startActivity(intent)
-            activity?.finish()
-        } else {
-            Toast.makeText(
-                requireActivity(),
-                getString(R.string.booking_failed),
-                Toast.LENGTH_SHORT
-            ).show()
         }
     }
 

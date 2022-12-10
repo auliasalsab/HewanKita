@@ -93,6 +93,38 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
 
         getDataOutlet()
 
+        binding.apply {
+            binding.btnNext.setOnClickListener{
+                val outletId = binding.tvOutletId.text.toString().trim()
+                val outletEmail = binding.tvOutletEmail.text.toString().trim()
+                val outlet = binding.tvOutlet.text.toString().trim()
+                val bookingDate = "${getString(R.string.bookingDate)}:  ${
+                    binding.tvBookingDate.text.toString().trim()
+                }"
+                val bookingTime = "${getString(R.string.bookingTime)}:  ${
+                    binding.tvBookingTime.text.toString().trim()
+                }"
+                if (outlet.isNotEmpty() && outletId.isNotEmpty() && outletEmail.isNotEmpty() && bookingTime.isNotEmpty() && bookingDate.isNotEmpty()) {
+                    addService(outlet, bookingDate, bookingTime, outletId, outletEmail)
+
+                    Toast.makeText(
+                        requireActivity(),
+                        resources.getString(R.string.booking_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    val intent = Intent(requireActivity(), BottomActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+                } else {
+                    Toast.makeText(
+                        requireActivity(),
+                        getString(R.string.booking_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+
         return root
     }
 
@@ -100,8 +132,8 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
         val tvBookingDate = tvBookingDate.text
         val tvBookingTime = tvBookingTime.text
         btnNext.isEnabled =
-                tvBookingDate != null && tvBookingDate.toString().isNotEmpty() &&
-                tvBookingTime != null && tvBookingTime.toString().isNotEmpty()
+            tvBookingDate != null && tvBookingDate.toString().isNotEmpty() &&
+                    tvBookingTime != null && tvBookingTime.toString().isNotEmpty()
     }
 
     override fun onClick(v: View?) {
@@ -151,34 +183,6 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
 
             timePicker.show()
         }
-        if (v == binding.btnNext) {
-            val outletId = binding.tvOutletId.text.toString().trim()
-            val outletEmail = binding.tvOutletEmail.text.toString().trim()
-            val outlet = binding.tvOutlet.text.toString().trim()
-            val bookingDate = "${getString(R.string.bookingDate)}:  ${
-                binding.tvBookingDate.text.toString().trim()
-            }"
-            val bookingTime = "${getString(R.string.bookingTime)}:  ${
-                binding.tvBookingTime.text.toString().trim()
-            }"
-
-            addService(outlet, bookingDate, bookingTime, outletId, outletEmail)
-
-            Toast.makeText(
-                requireActivity(),
-                resources.getString(R.string.booking_success),
-                Toast.LENGTH_SHORT
-            ).show()
-            val intent = Intent(requireActivity(), BottomActivity::class.java)
-            startActivity(intent)
-            activity?.finish()
-        } else {
-            Toast.makeText(
-                requireActivity(),
-                getString(R.string.booking_failed),
-                Toast.LENGTH_SHORT
-            ).show()
-        }
     }
 
     private fun getCurrentTime(): String? {
@@ -193,7 +197,13 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
         return !time2!!.before(time1)
     }
 
-    private fun addService(outlet: String, bookingDate: String, bookingTime: String, outletEmail: String, outletId: String) {
+    private fun addService(
+        outlet: String,
+        bookingDate: String,
+        bookingTime: String,
+        outletEmail: String,
+        outletId: String
+    ) {
         val user: FirebaseUser? = auth.currentUser
         val userEmail: String? = user!!.email
 
@@ -215,10 +225,11 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
         databaseReference.push().setValue(hashMap)
     }
 
-    private fun getDataOutlet(){
+    private fun getDataOutlet() {
         val outletID = requireActivity().intent.getStringExtra(OUTLET_ID)
 
-        val dbRef = FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_USER).child(outletID!!)
+        val dbRef =
+            FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_USER).child(outletID!!)
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(AllData::class.java)
@@ -238,7 +249,7 @@ class VaccinationFragment : Fragment(), View.OnClickListener {
         _binding = null
     }
 
-    companion object{
+    companion object {
         const val OUTLET_ID = "Id"
     }
 }

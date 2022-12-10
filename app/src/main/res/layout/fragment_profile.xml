@@ -177,13 +177,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:visibility="visible"
                 android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
                 android:layout_gravity="center"
-                android:background="@color/gray"/>
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:background="@color/gray"
+                android:visibility="visible" />
 
             <LinearLayout
                 android:id="@+id/column4"

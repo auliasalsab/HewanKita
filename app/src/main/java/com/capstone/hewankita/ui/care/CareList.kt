@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.hewankita.R
 import com.capstone.hewankita.adapter.CareAdapter
-import com.capstone.hewankita.adapter.ConsultantAdapter
 import com.capstone.hewankita.data.AllData
 import com.capstone.hewankita.databinding.ActivityListOutletBinding
 import com.capstone.hewankita.utils.Constants

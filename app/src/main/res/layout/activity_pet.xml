@@ -30,7 +30,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars" />
+                android:src="@drawable/logo"/>
 
             <TextView
                 android:id="@+id/tv_name_pet"
@@ -42,7 +42,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/img_pet"
                 app:layout_constraintStart_toEndOf="@+id/img_pet"
                 app:layout_constraintTop_toTopOf="@+id/img_pet"
-                tools:text="@tools:sample/lorem" />
+                android:text="@string/hewan_kita"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -80,7 +80,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/tv_species"
                 app:layout_constraintTop_toBottomOf="@+id/tv_species"
-                tools:text="@tools:sample/lorem" />
+                android:text="@string/hewan_kita"/>
 
             <TextView
                 android:id="@+id/tv_gender"
@@ -100,7 +100,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/tv_species"
                 app:layout_constraintTop_toBottomOf="@+id/tv_gender"
-                tools:text="@tools:sample/lorem" />
+                android:text="@string/hewan_kita"/>
 
             <TextView
                 android:id="@+id/tv_ttl"
@@ -120,7 +120,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/tv_species"
                 app:layout_constraintTop_toBottomOf="@+id/tv_ttl"
-                tools:text="@tools:sample/lorem" />
+                android:text="@string/hewan_kita"/>
 
             <TextView
                 android:id="@+id/tv_berat"
@@ -140,7 +140,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/tv_species"
                 app:layout_constraintTop_toBottomOf="@+id/tv_berat"
-                tools:text="@tools:sample/lorem" />
+                android:text="@string/hewan_kita"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -175,7 +175,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/tv_bulu"
                 app:layout_constraintTop_toBottomOf="@+id/tv_bulu"
-                tools:text="@tools:sample/lorem" />
+                android:text="@string/hewan_kita"/>
 
             <TextView
                 android:id="@+id/tv_ciri"
@@ -195,7 +195,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/tv_bulu"
                 app:layout_constraintTop_toBottomOf="@+id/tv_ciri"
-                tools:text="@tools:sample/lorem" />
+                android:text="@string/hewan_kita" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

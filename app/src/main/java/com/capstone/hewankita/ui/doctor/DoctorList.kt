@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.hewankita.R
-import com.capstone.hewankita.adapter.ConsultantAdapter
 import com.capstone.hewankita.adapter.DoctorAdapter
 import com.capstone.hewankita.data.AllData
 import com.capstone.hewankita.databinding.ActivityListOutletBinding

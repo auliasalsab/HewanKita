@@ -8,17 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.capstone.hewankita.R
 import com.capstone.hewankita.databinding.FragmentHomeBinding
-import com.capstone.hewankita.ui.care.CareActivity
 import com.capstone.hewankita.ui.care.CareList
-import com.capstone.hewankita.ui.consultation.ConsultationActivity
-import com.capstone.hewankita.ui.consultation.ListConsultant
-import com.capstone.hewankita.ui.doctor.DoctorActivity
-import com.capstone.hewankita.ui.doctor.DoctorFragment
 import com.capstone.hewankita.ui.doctor.DoctorList
-import com.capstone.hewankita.ui.grooming.GroomingActivity
 import com.capstone.hewankita.ui.grooming.GroomingList
 import com.capstone.hewankita.ui.login.LoginActivity
-import com.capstone.hewankita.ui.vaccination.VaccinationActivity
 import com.capstone.hewankita.ui.vaccination.VaccinationList
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
