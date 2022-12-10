@@ -2,7 +2,6 @@ package com.capstone.hewankita.ui.care
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.ContentValues
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -28,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.text.SimpleDateFormat
 
 class CareFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentCareBinding? = null
@@ -174,11 +172,7 @@ class CareFragment : Fragment(), View.OnClickListener {
                         c.get(Calendar.MINUTE)
                     }"
                 val time = "$showHrs:$showMinutes $amPm"
-                if (!compareTwoTimes(getCurrentTime()!!, time)) {
-                    binding.tvTimeOfArrival.setText(getString(R.string.cannot_use_past_time))
-                } else {
-                    binding.tvTimeOfArrival.setText(time)
-                }
+                binding.tvTimeOfArrival.setText(time)
 
             }, mHour, mMinute, false)
 
@@ -212,18 +206,6 @@ class CareFragment : Fragment(), View.OnClickListener {
                 Toast.LENGTH_SHORT
             ).show()
         }
-    }
-
-    private fun getCurrentTime(): String? {
-        val simpleDateFormat = SimpleDateFormat("hh:mm a")
-        return simpleDateFormat.format(Calendar.getInstance().time)
-    }
-
-    private fun compareTwoTimes(fromTime: String, currentTime: String): Boolean {
-        val sdf = SimpleDateFormat("hh:mm a")
-        val time1 = sdf.parse(fromTime)
-        val time2 = sdf.parse(currentTime)
-        return !time2!!.before(time1)
     }
 
     private fun addService(outlet: String, checkIn: String, checkOut: String, timeOA: String, outletEmail: String, outletId: String) {
