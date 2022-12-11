@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondaryGray"
     tools:context=".ui.ProfileActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,10 +35,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imageViewProfile"
                 android:layout_centerHorizontal="true"
-                tools:text="@tools:sample/lorem"
                 android:fontFamily="sans-serif-black"
                 android:textColor="@color/primary_color"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:text="@tools:sample/lorem" />
 
             <TextView
                 android:id="@+id/tvEmail"
@@ -52,19 +49,18 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="sans-serif-medium"
-                tools:text="@tools:sample/lorem"
+                android:textColor="@color/gray"
                 android:textSize="12sp"
-                android:textColor="@color/gray"/>
-
+                tools:text="@tools:sample/lorem" />
         </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/container2"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
             android:background="@drawable/cardviewbackground"
             android:orientation="vertical"
-            android:layout_marginTop="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/container1">
@@ -85,7 +81,7 @@
                     android:src="@drawable/ic_baseline_pets" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingStart="20dp"
@@ -99,80 +95,82 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="200dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:contentDescription="@string/ic_arrow"
                     android:src="@drawable/ic_baseline_arrow_forward" />
-
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/column2"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="30dp"
-                    android:src="@drawable/ic_baseline_schedule"
-                    android:contentDescription="@string/ic_schedule" />
+                    android:contentDescription="@string/ic_schedule"
+                    android:src="@drawable/ic_baseline_schedule" />
+
                 <TextView
-                    android:textStyle="bold"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/primary_color"
+                    android:layout_gravity="center_vertical"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:text="@string/cek_jadwal"/>
+                    android:text="@string/cek_jadwal"
+                    android:textColor="@color/primary_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginStart="167dp"
-                    android:src="@drawable/ic_baseline_arrow_forward"
-                    android:contentDescription="@string/ic_arrow" />
+                    android:contentDescription="@string/ic_arrow"
+                    android:src="@drawable/ic_baseline_arrow_forward" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/column3"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="30dp"
-                    android:src="@drawable/ic_baseline_settings"
-                    android:contentDescription="@string/ic_settings" />
+                    android:contentDescription="@string/ic_settings"
+                    android:src="@drawable/ic_baseline_settings" />
+
                 <TextView
-                    android:textStyle="bold"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/primary_color"
+                    android:layout_gravity="center_vertical"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:text="@string/edit_profil"/>
+                    android:text="@string/edit_profil"
+                    android:textColor="@color/primary_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginStart="175dp"
-                    android:src="@drawable/ic_baseline_arrow_forward"
-                    android:contentDescription="@string/ic_arrow" />
+                    android:contentDescription="@string/ic_arrow"
+                    android:src="@drawable/ic_baseline_arrow_forward" />
             </LinearLayout>
 
             <View
@@ -187,73 +185,76 @@
 
             <LinearLayout
                 android:id="@+id/column4"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="30dp"
-                    android:src="@drawable/ic_baseline_info"
-                    android:contentDescription="@string/ic_info" />
+                    android:contentDescription="@string/ic_info"
+                    android:src="@drawable/ic_baseline_info" />
+
                 <TextView
-                    android:textStyle="bold"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/primary_color"
+                    android:layout_gravity="center_vertical"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:text="@string/informasi"/>
+                    android:text="@string/informasi"
+                    android:textColor="@color/primary_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginStart="175dp"
-                    android:src="@drawable/ic_baseline_arrow_forward"
-                    android:contentDescription="@string/ic_arrow" />
+                    android:contentDescription="@string/ic_arrow"
+                    android:src="@drawable/ic_baseline_arrow_forward" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/column5"
-                android:orientation="horizontal"
-                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal"
+                android:padding="10dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="30dp"
-                    android:src="@drawable/ic_baseline_logout"
-                    android:contentDescription="@string/ic_logout" />
+                    android:contentDescription="@string/ic_logout"
+                    android:src="@drawable/ic_baseline_logout" />
+
                 <TextView
-                    android:textStyle="bold"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/primary_color"
+                    android:layout_gravity="center_vertical"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:text="@string/logout"/>
+                    android:text="@string/logout"
+                    android:textColor="@color/primary_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginStart="189dp"
-                    android:src="@drawable/ic_baseline_arrow_forward"
-                    android:contentDescription="@string/ic_arrow" />
+                    android:contentDescription="@string/ic_arrow"
+                    android:src="@drawable/ic_baseline_arrow_forward" />
             </LinearLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </ScrollView>

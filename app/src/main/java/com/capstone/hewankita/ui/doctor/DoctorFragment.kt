@@ -92,7 +92,7 @@ class DoctorFragment : Fragment(), View.OnClickListener {
         getDataOutlet()
 
         binding.apply {
-            binding.btnNext.setOnClickListener{
+            btnNext.setOnClickListener{
                 val outletId = binding.tvOutletId.text.toString().trim()
                 val outletEmail = binding.tvOutletEmail.text.toString().trim()
                 val outlet = binding.tvOutlet.text.toString().trim()

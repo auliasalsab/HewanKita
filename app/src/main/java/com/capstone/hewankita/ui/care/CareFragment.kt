@@ -105,6 +105,39 @@ class CareFragment : Fragment(), View.OnClickListener {
             }
         })
 
+        binding.apply {
+
+            binding.btnNext.setOnClickListener {
+                val outletId = binding.tvOutletId.text.toString().trim()
+                val outletEmail = binding.tvOutletEmail.text.toString().trim()
+                val outlet = binding.tvOutlet.text.toString().trim()
+                val checkIn =
+                    "${getString(R.string.checkIn)}:  ${binding.tvCheckIn.text.toString().trim()}"
+                val checkOut =
+                    "${getString(R.string.checkOut)}:  ${binding.tvCheckOut.text.toString().trim()}"
+                val timeOfArrival = "${getString(R.string.timeOfArrival)}:  ${
+                    binding.tvTimeOfArrival.text.toString().trim()
+                }"
+                addService(outlet, checkIn, checkOut, timeOfArrival, outletId, outletEmail)
+
+                if (outlet.isNotEmpty() && outletEmail.isNotEmpty() && outlet.isNotEmpty() && checkIn.isNotEmpty() && checkOut.isNotEmpty() && timeOfArrival.isNotEmpty()) {
+                    Toast.makeText(
+                        requireActivity(),
+                        resources.getString(R.string.booking_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    val intent = Intent(requireActivity(), BottomActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+                } else {
+                    Toast.makeText(
+                        requireActivity(),
+                        getString(R.string.booking_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
         getDataOutlet()
 
         return root
@@ -115,9 +148,9 @@ class CareFragment : Fragment(), View.OnClickListener {
         val tvCheckOut = tvCheckOut.text
         val tvTimeOfArrival = tvTimeOfArrival.text
         btnNext.isEnabled =
-                tvCheckIn != null && tvCheckIn.toString().isNotEmpty() &&
-                tvCheckOut != null && tvCheckOut.toString().isNotEmpty() &&
-                tvTimeOfArrival != null && tvTimeOfArrival.toString().isNotEmpty()
+            tvCheckIn != null && tvCheckIn.toString().isNotEmpty() &&
+                    tvCheckOut != null && tvCheckOut.toString().isNotEmpty() &&
+                    tvTimeOfArrival != null && tvTimeOfArrival.toString().isNotEmpty()
     }
 
     override fun onClick(v: View?) {
@@ -178,37 +211,16 @@ class CareFragment : Fragment(), View.OnClickListener {
 
             timePicker.show()
         }
-        if (v == binding.btnNext) {
-            val outletId = binding.tvOutletId.text.toString().trim()
-            val outletEmail = binding.tvOutletEmail.text.toString().trim()
-            val outlet = binding.tvOutlet.text.toString().trim()
-            val checkIn =
-                "${getString(R.string.checkIn)}:  ${binding.tvCheckIn.text.toString().trim()}"
-            val checkOut =
-                "${getString(R.string.checkOut)}:  ${binding.tvCheckOut.text.toString().trim()}"
-            val timeOfArrival = "${getString(R.string.timeOfArrival)}:  ${
-                binding.tvTimeOfArrival.text.toString().trim()
-            }"
-            addService(outlet, checkIn, checkOut, timeOfArrival, outletId, outletEmail)
-
-            Toast.makeText(
-                requireActivity(),
-                resources.getString(R.string.booking_success),
-                Toast.LENGTH_SHORT
-            ).show()
-            val intent = Intent(requireActivity(), BottomActivity::class.java)
-            startActivity(intent)
-            activity?.finish()
-        } else {
-            Toast.makeText(
-                requireActivity(),
-                getString(R.string.booking_failed),
-                Toast.LENGTH_SHORT
-            ).show()
-        }
     }
 
-    private fun addService(outlet: String, checkIn: String, checkOut: String, timeOA: String, outletEmail: String, outletId: String) {
+    private fun addService(
+        outlet: String,
+        checkIn: String,
+        checkOut: String,
+        timeOA: String,
+        outletEmail: String,
+        outletId: String
+    ) {
         val user: FirebaseUser? = auth.currentUser
         val userEmail: String? = user!!.email
 
@@ -231,10 +243,11 @@ class CareFragment : Fragment(), View.OnClickListener {
         databaseReference.push().setValue(hashMap)
     }
 
-    private fun getDataOutlet(){
+    private fun getDataOutlet() {
         val outletID = requireActivity().intent.getStringExtra(OUTLET_ID)
 
-        val dbRef = FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_USER).child(outletID!!)
+        val dbRef =
+            FirebaseDatabase.getInstance().getReference(Constants.TABLE_DATA_USER).child(outletID!!)
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(AllData::class.java)
@@ -254,7 +267,7 @@ class CareFragment : Fragment(), View.OnClickListener {
         _binding = null
     }
 
-    companion object{
+    companion object {
         const val OUTLET_ID = "Id"
     }
 }
